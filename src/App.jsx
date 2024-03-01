@@ -10,7 +10,7 @@ const App = () => {
   // const [token, setToken] = useState(); //token is var for current state, setToken is func to update state
 
   // if(!token) {
-  //   return <Login setToken={setToken} />
+  //   return <Home setToken={setToken} />
   // }
 
   return(
