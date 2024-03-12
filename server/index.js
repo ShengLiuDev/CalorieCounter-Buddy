@@ -1,17 +1,22 @@
-const express = require('express'); //loads express module and make sure it exists
-const app = express(); //create express object
-const cors = require('cors');
+//Index.js is entry point for our backend server
 
-console.log(app)
+//Importing necessary modules necessary
+const express = require('express'); //import express module and make sure it exists
+const cors = require('cors');       //import cors for Cross-Origin Resource Sharing so backend can interact wiht front end
 
-app.use(cors()) //use cors library
+//Create express application stored in app variable
+const app = express();
 
-//event handler used to handle HTTP GET requests made to the application's / root
-app.get('', (request,response) => {
-  response.send("Something going on")
+
+app.use(cors())         //use cors library
+app.use(express.json()) //use express json library for parsing incoming json
+
+//Event Handler for GET requests to application's root URL
+app.get('/', (request,response) => {
+    response.send("This is our backend")
 })
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => { //express object listens to port
-  console.log(`Server running on port ${PORT}`)
+    console.log(`Server running on port ${PORT}`)
 })
