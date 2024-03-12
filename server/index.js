@@ -1,21 +1,28 @@
 //Index.js is entry point for our backend server
 
-//Importing necessary modules necessary
-const express = require('express'); //import express module and make sure it exists
-const cors = require('cors');       //import cors for Cross-Origin Resource Sharing so backend can interact wiht front end
+//Importing libraries and modules as needed
+require('dotenv').config()                          //Enviroment variables
+const Recipe = require('./models/Recipes.js')       //Recipe model
+const express = require('express');                 //Express module/library
+const cors = require('cors');                       //Cross Origin Resource Sharing Library
 
-//Create express application stored in app variable
-const app = express();
+
+const app = express(); //Create express application
 
 
 app.use(cors())         //use cors library
 app.use(express.json()) //use express json library for parsing incoming json
 
+
 //Event Handler for GET requests to application's root URL
 app.get('/', (request,response) => {
-    response.send("This is our backend")
+    Recipe.find({}).then(recipes => {
+        response.json(recipes)
+    })
 })
 
+
+//Set PORT and listen to PORT
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => { //express object listens to port
     console.log(`Server running on port ${PORT}`)
