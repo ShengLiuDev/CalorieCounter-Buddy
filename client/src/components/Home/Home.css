@@ -1,0 +1,10 @@
+.stack-image {
+    position: absolute;
+    top: 30vh;
+    left: 70vw;
+    transition: transform 0.3s ease;
+}
+  
+.stack-image:hover {
+    transform: rotate(360deg);
+}
