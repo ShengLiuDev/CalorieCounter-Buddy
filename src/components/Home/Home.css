@@ -1,0 +1,10 @@
+.backphoto {
+    /* Replace this with the path to your image file */
+    background-image: url(src/food.png);
+    /* Other background properties */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+    /* Other styles 
+    font-family: sans-serif;*/
+  }

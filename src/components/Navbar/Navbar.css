@@ -13,6 +13,15 @@
     justify-content: center;
     color: white;
   }
+
+  .linkLogin {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    align-items: right;
+    justify-content: center;
+    color: paleturquoise;
+  }
   
   .navbar a {
     color: white;

@@ -23,7 +23,7 @@ export default function Signup() {
             </div>
             <div>
             <p>Already have an account?</p>
-            <Link to="/" className="login-text">
+            <Link to="/login" className="login-text">
                 Login Here
             </Link>
             </div>
