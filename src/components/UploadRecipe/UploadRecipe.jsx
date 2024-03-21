@@ -44,6 +44,7 @@ function UploadRecipe() {
 
     return( 
         <div className='wrapper'>
+            <div className='text-color'>
             <h1>Submit Your Recipe Idea Here!</h1>
             {submitting &&
                 <div>Submtting Form...</div>}
@@ -74,6 +75,7 @@ function UploadRecipe() {
             </fieldset>
             <button type="submit">Submit</button>
             </form>
+            </div>
         </div>
     );
 }

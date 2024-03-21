@@ -3,8 +3,8 @@ import './Home.css'
 
 export default function Home() {
   return(
-    <div className='backphoto'>
-      
+    <div className="text-color">
+      <h2>Welcome to Calorie Counter Buddy!</h2>
     </div>
   );
 }
