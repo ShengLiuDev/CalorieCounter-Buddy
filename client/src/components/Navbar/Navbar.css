@@ -1,26 +1,29 @@
 .navbar {
-  width: 100%;
   height: 60px;
-  background: #0c7f47;
   background-image: linear-gradient(to bottom,#0b6a3c,#0c7f47	);
   font-family: "Open Sans", sans-serif;
-  font-weight: 415;
   -webkit-box-shadow: 0 20px 20px 20px #999;
   -moz-box-shadow: 0 20px 20px -20px #999;
   box-shadow: 0 20px 20px -20px #999;
+  flex-wrap: nowrap
 }
 
 .links {
-  width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   color: white;
 }
 
 .navbar a {
+  font-weight: 415;
   color: white;
   text-decoration: none;
   margin: 20px;
   font-size: 15px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }

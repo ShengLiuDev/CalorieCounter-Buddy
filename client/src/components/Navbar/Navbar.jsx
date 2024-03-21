@@ -11,7 +11,7 @@ const Navbar = () => {
 
                 {/* Navbar brand */}
                 <Link className="navbar-brand" to="/">
-                    <img src={GatorLogo} alt="Gator Logo" width="90" height="50" className="d-inline-block align-top"/>
+                    <img src={GatorLogo} className="d-inline-block align-top img-responsive" alt="Gator Logo" width="90" height="50"/>
                 </Link>
 
                 {/* Navbar links */}
@@ -23,14 +23,15 @@ const Navbar = () => {
                         <Link className="nav-link" to="/calorie-counter">Calories</Link>
                         {/* About Us link */}
                         <Link className="nav-link" to="/about">About Us</Link>
-                    
+                        {/* Upload Recipe link */}
+                        <Link className="nav-link" to="/upload-recipe">Upload Recipe</Link>
                     </div>
                 </div>
 
                 {/*Stuff on the Right Hand Side */}
                 {/* Login link */}
                 <Link className="login" to="/login">
-                    <img src={LoginIcon} alt="Login Icon" width="30" height="30" className="login d-inline-block align-top"/>
+                    <img src={LoginIcon} className="login d-inline-block align-top img-responsive" alt="Login Icon" width="30" height="30" />
                 </Link>
             </div>
         </nav>

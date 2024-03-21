@@ -6,6 +6,7 @@ import Login from "./components/Login/Login"
 import Home from './components/Home/Home';
 import Signup from './components/Signup/Signup';
 import Navbar from './components/Navbar/Navbar';
+import UploadRecipe from './components/UploadRecipe/UploadRecipe';
 import NotFound from './components/NotFound/NotFound';
 
 
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/login" element = {<Login />}></Route>
         <Route path = "/" element={<Home />}></Route>
         <Route path= "/signup" element={<Signup />}></Route>
+        <Route path="/upload-recipe" element={<UploadRecipe />}></Route>
         <Route component={NotFound} />
       </Routes>
     </AuthProvider>

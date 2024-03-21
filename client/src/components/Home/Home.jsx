@@ -11,7 +11,7 @@ const Home = () => {
             <div className="container">
                 <div className="row">
                     <div className="col">
-                    1 of 2
+                    
                     </div>
                     <div className="col">
                         <div className="col-md-4">

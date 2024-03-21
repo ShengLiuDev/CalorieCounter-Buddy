@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 export default function Signup() {
     return(
     <div className="signup-wrapper">
+        <div className='text-color'>
         <h1>Sign up for a Calorie Counter Buddy account below!</h1>
         <form>
             <label>
@@ -23,11 +24,12 @@ export default function Signup() {
             </div>
             <div>
             <p>Already have an account?</p>
-            <Link to="/" className="login-text">
+            <Link to="/login" className="login-text">
                 Login Here
             </Link>
             </div>
         </form>
+        </div>
     </div>
     );
 }

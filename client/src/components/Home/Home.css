@@ -8,3 +8,19 @@
 .stack-image:hover {
     transform: rotate(360deg);
 }
+
+body {
+    /* Replace this with the path to your image file */
+    background-image: url(src/food.png);
+    /* Other background properties */
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+    /* Other styles 
+    font-family: sans-serif;*/
+  }
+
+
+.text-color {
+  color: white;
+}
