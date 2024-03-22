@@ -14,7 +14,8 @@ body {
     background-image: url(src/food.png);
     /* Other background properties */
     background-size: cover;
-    background-position: center;
+    /* This line makes the background misalign and wrap strangely for me */
+    //background-position: center;
     opacity: 1;
     /* Other styles 
     font-family: sans-serif;*/
