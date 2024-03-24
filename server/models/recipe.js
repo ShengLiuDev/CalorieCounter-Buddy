@@ -66,19 +66,4 @@ recipeSchema.set('toJSON', {
 })
 
 
-const Recipe = mongoose.model('Recipe', recipeSchema);
-
-const recipe = new Recipe({
-  title: 'First Recipe',
-  ingredients: [{name:'pickles',quantity:'1',measurement:'cups'}],
-  steps: ['Step1','Step2'],
-  nutritionalInformation: {calories: 100, protein: 20, fat: 20, carbohydrates: 20},
-  photos: []
-})
-
-recipe.save().then(result => {
-  console.log('recipe saved!')
-  mongoose.connection.close()
-})
-
 module.exports = mongoose.model('Recipe', recipeSchema)

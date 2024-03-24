@@ -1,27 +1,22 @@
-.stack-image {
-    position: absolute;
-    top: 30vh;
-    left: 70vw;
-    transition: transform 0.3s ease;
-}
-  
-.stack-image:hover {
-    transform: rotate(360deg);
-}
-
-body {
-    /* Replace this with the path to your image file */
-    background-image: url(src/food.png);
-    /* Other background properties */
-    background-size: cover;
-    /* This line makes the background misalign and wrap strangely for me */
-    //background-position: center;
-    opacity: 1;
-    /* Other styles 
-    font-family: sans-serif;*/
-  }
-
-
 .text-color {
   color: white;
 }
+
+.fade-in-from-right {
+	animation: fadeInRight 2s forwards; /* Animation duration and fill mode */
+}
+  
+@keyframes fadeInRight {
+	0% {
+	  opacity: 0; /* Start with zero opacity */
+	}
+	100% {
+	  opacity: 1; /* End with full opacity */
+	}
+}
+
+body, html {
+	margin: 0;
+	padding: 0;
+  }
+  
