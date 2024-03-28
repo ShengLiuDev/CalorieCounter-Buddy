@@ -8,6 +8,8 @@ import Signup from './components/Signup/Signup';
 import Navbar from './components/Navbar/Navbar';
 import UploadRecipe from './components/UploadRecipe/UploadRecipe';
 import NotFound from './components/NotFound/NotFound';
+import Popular from './components/Popular/Popular';
+import CalorieCounter from './components/CalorieCounter/CalorieCounter';
 
 
 const App = () => {
@@ -26,6 +28,8 @@ const App = () => {
         <Route path = "/" element={<Home />}></Route>
         <Route path= "/signup" element={<Signup />}></Route>
         <Route path="/upload-recipe" element={<UploadRecipe />}></Route>
+        <Route path="/popular" element={<Popular />}></Route> 
+        <Route path="/calorie-counter" element={<CalorieCounter/>}></Route>
         <Route component={NotFound} />
       </Routes>
     </AuthProvider>
