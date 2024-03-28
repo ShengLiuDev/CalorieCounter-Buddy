@@ -4,12 +4,16 @@ import './UploadRecipe.css'
 
 function UploadRecipe() {
 
+    const [inputFields, setInputFields] = useState([
+        {ingredients: '', quantity: '', measurement: ''}
+    ]);
+
     const formReducer = (state, event) => {
         if(event.reset) {
             return {
+              recipename: '',
               instructions: '',
-              ingredients: '',
-              name: '',
+              inputFields,
               'public': false,
             }
           }
@@ -23,6 +27,7 @@ function UploadRecipe() {
     const [submitting, setSubmitting] = useState(false);
     const handleSubmit = event => {
         event.preventDefault();
+        console.log(formData);
         setSubmitting(true);
 
         setTimeout(() => {
@@ -42,6 +47,17 @@ function UploadRecipe() {
         });
       }
 
+      const handleFormChange = (index, event) => {
+        let data = [...inputFields];
+        data[index][event.target.name] = event.target.value;
+        setInputFields(data);
+     }
+
+     const addFields = () => {
+        let newfield = {ingredients: '', quantity: '', measurement: ''}
+        setInputFields([...inputFields, newfield])
+     }
+
     return( 
         <div className='wrapper'>
             <div className='text-color'>
@@ -52,15 +68,28 @@ function UploadRecipe() {
             <fieldset>
                 <label>
                     <p>Name of Recipe</p>
-                    <input name="name" onChange={handleChange} value={formData.name || ''}/>
+                    <input name="recipename" onChange={handleChange} value={formData.recipename || ''}/>
                 </label>
             </fieldset>
             <fieldset>
-                <label>
-                    <p>List of Ingredients</p>
-                    <input name="ingredients" onChange={handleChange} value={formData.ingredients || ''}/>
-                </label>
+                <div>
+                    {
+                        inputFields.map((input, index) => {
+                            return(
+                                <div key = {index}>
+                                    <p>Ingredient Name</p>
+                                    <input name="ingredients" onChange={event => handleFormChange(index, event)} value={input.ingredients || ''}/>
+                                    <p>Quantity</p>
+                                    <input name="quantity" onChange={event => handleFormChange(index, event)} value={input.quantity || ''}/>
+                                    <p>Unit of Measurement</p>
+                                    <input name="measurement" onChange={event => handleFormChange(index, event)} value={input.measurement || ''}/>
+                                </div>
+                            )
+                        })
+                    }    
+                </div>
             </fieldset>
+            <button onClick={addFields}>Add More..</button>
             <fieldset>
                 <label>
                     <p>Instructions</p>
