@@ -12,11 +12,12 @@ const Home = () => {
                     
                     </div>
                     <div className="col">
-                        <img src={food1Image} width="20%" height="100%" className="fade-in-from-right" alt="Image 1" />
+                        <img src={food3Image} className="fade-from-right img-fluid" alt="Image 1" />
                         {/* <img src={food2Image} width="300" height = "300" className="fade-in-from-right" alt="Image 2" />
                         <img src={food3Image}  width="300" height = "300" className="fade-in-from-right" alt="Image 3"/> */}
+                    
                     </div>
-                </div>            
+                </div>
         </div>
     )
 };

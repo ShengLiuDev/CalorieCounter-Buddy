@@ -2,18 +2,29 @@
   color: white;
 }
 
-.fade-in-from-right {
-	animation: fadeInRight 2s forwards; /* Animation duration and fill mode */
-}
+.fade-from-right {
+	position: relative;
+	opacity: 0;
+	animation: fadeInRight 4s forwards, moveFromRight 3s forwards;
+  }
   
-@keyframes fadeInRight {
+  @keyframes fadeInRight {
 	0% {
 	  opacity: 0; /* Start with zero opacity */
 	}
 	100% {
 	  opacity: 1; /* End with full opacity */
 	}
-}
+  }
+  
+  @keyframes moveFromRight {
+	0% {
+	  left: 10%; /* Start from outside the viewport on the right */
+	}
+	100% {
+	  left: 0; /* End at the right edge of its relatively positioned parent */
+	}
+  }
 
 body, html {
 	margin: 0;
