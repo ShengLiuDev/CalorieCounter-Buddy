@@ -1,5 +1,5 @@
-import React, { useState, useEffect }from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { doSignInWithEmailAndPassword, doSignInWithGoogle } from '../../firebase/auth';
 import { useAuth } from '../../contexts/authContext';
 
@@ -93,37 +93,3 @@ const Login = () => {
 };
 
 export default Login;
-
-// export default function Login() {
-//   return (
-//     <div className='login-wrapper'>
-//       <div className='login-title'>
-//         <h1>Login</h1>
-//       </div>
-//       <form>
-//         <div className='email-section'>
-//           <label>
-//             <p>Email</p>
-//             <input type="text" />
-//           </label>
-//         </div>
-//         <div className='password-section'>
-//           <label>
-//             <p>Password</p>
-//             <input type="password" />
-//           </label>
-//         </div>
-//         <div className='login-button'>
-//           <button type="submit">Submit</button>
-//         </div>
-//         <div>
-//           <p>Don't have an account yet?
-//             <Link to="/signup" className='signup-text'>
-//               Sign up
-//             </Link>
-//           </p>
-//         </div>
-//       </form>
-//     </div>
-//   );
-// }
