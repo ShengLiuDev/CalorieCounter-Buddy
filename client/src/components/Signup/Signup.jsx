@@ -1,35 +1,134 @@
-import React from 'react';
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { doCreateUserWithEmailAndPassord, doSignInWithEmailAndPassword, doSignInWithGoogle } from '../../firebase/auth';
+import { useAuth } from '../../contexts/authContext';
+import revealPassword from "../../icons/reveal-password.png"
 
-export default function Signup() {
-    return(
-    <div className="signup-wrapper">
-        <div className='text-color'>
-        <h1>Sign up for a Calorie Counter Buddy account below!</h1>
-        <form>
-            <label>
-                <p>Email</p>
-                <input type="email" />
-            </label>
-            <label>
-                <p>Username</p>
-                <input type="text" />
-            </label>
-            <label>
-                <p>Password</p>
-                <input type="password" />
-            </label>
-            <div>
-                <button type="submit">Sign Up</button>
+const Signup = () => {
+  const navigate = useNavigate();
+  const { userSignedup } = useAuth();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordShown, setPasswordShown] = useState(false);
+  const [isSigningUp, setIsSigningUp] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+
+  const validatePassword = () => {
+    return password == confirmPassword && passwordPattern.test(password);
+  }
+
+  const togglePasswordVisibility = () => {
+    setPasswordShown(!passwordShown);
+  }
+
+  //redirect if the user is signedup to the login page
+  useEffect(() => {
+    if (userSignedup) {
+      navigate('/login');
+    }
+  }, [userSignedup, navigate]);
+
+  const onSubmit = async(e) => {
+    e.preventDefault()
+    if (!validatePassword()) {
+        setErrorMessage("Passwords do not match or do not meet the criteria");
+        return;
+    }
+    setIsSigningUp(true);
+
+    try {
+        await doCreateUserWithEmailAndPassord(email, password); 
+        // make sure to use correct function for signing up
+        navigate('/login');        
+    }
+    catch (error) {
+        setErrorMessage(error.message);
+    }
+    setIsSigningUp(false);
+  }
+
+  const onGoogleSignup = async(e) => {
+    e.preventDefault()
+    setIsSigningup(true);
+
+    try {
+      await doSignupWithGoogle(); // same function for signing in with google, so just go home
+      navigate('/home')
+    } 
+    catch (error){
+      setErrorMessage(error.message);
+    }
+    setIsSigningup(false);
+  }
+
+  return (
+    <div className='container mt-5'>
+      <div className='row justify-content-center'>
+        <div className='col-md-6'>
+          <div className='card'>
+            <h2 className='card-header text-center'>Signup</h2>
+            <div className='card-body'>
+              {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}
+              <form onSubmit={onSubmit}>
+                <div className='mb-3'>
+                  <label htmlFor='emailInput' className='form-label'>Email</label>
+                  <input 
+                    type='email' 
+                    className='form-control' 
+                    id='emailInput' 
+                    value={email} 
+                    onChange={(e) => setEmail(e.target.value)} 
+                    required
+                  />
+                </div>
+                <div className='mb-3'>
+                  <label htmlFor='passwordInput' className='form-label'>Password</label>
+                  <input 
+                    type={passwordShown ? 'text' : 'password'} 
+                    className='form-control' 
+                    id='passwordInput' 
+                    value={password} 
+                    onChange={(e) => setPassword(e.target.value)} 
+                    required
+                  />
+                </div>
+                <div className='mb-4'>
+                  <label htmlFor='passwordInput2' className='form-label'>Re-Enter Password</label>
+                  <input 
+                    type={passwordShown ? 'text' : 'password'} 
+                    className='form-control' 
+                    id='passwordInput2' 
+                    value={confirmPassword} 
+                    onChange={(e) => setConfirmPassword(e.target.value)} 
+                    required
+                  />
+                </div>
+                <div>
+                    <input 
+                    type="checkbox" 
+                    checked={passwordShown}
+                    onChange={togglePasswordVisibility}
+                    
+                    /> Show password
+                </div>
+                <div className='d-grid gap-2'>
+                  <button type='submit' className='btn btn-primary' disabled={isSigningUp}>Signup</button>
+                  <button onClick={onGoogleSignup} className='btn btn-danger' disabled={isSigningUp}>Sign up with Google</button>
+                </div>
+                <div className='mt-3'>
+                  <p>Have an account already? <Link to="/login" className='link-primary'>Login</Link></p>
+                </div>
+              </form>
             </div>
-            <div>
-            <p>Already have an account?</p>
-            <Link to="/login" className="login-text">
-                Login Here
-            </Link>
-            </div>
-        </form>
+          </div>
         </div>
+      </div>
     </div>
-    );
-}
+  );
+};
+
+export default Signup;

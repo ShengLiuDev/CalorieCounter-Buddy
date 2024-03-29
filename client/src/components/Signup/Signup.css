@@ -1,13 +1,25 @@
-.login-text {
-    color:deeppink
-}
-
-.signup-wrapper {
+.login-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.text-color {
-    color: white;
+.login-title {
+    /* temp holder*/
+}
+
+.email-section {
+    /* temp holder*/
+}
+
+.password-section {
+    /* temp holder*/
+}
+
+.login-button {
+    /* temp holder*/
+}
+
+.signup-text {
+    color: rgb(121, 34, 139);
 }
