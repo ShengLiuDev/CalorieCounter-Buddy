@@ -1,10 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Home.css';
 import food1Image from '../../images/food1.jpg';
 import food2Image from '../../images/food2.jpg';
 import food3Image from '../../images/food3.jpg';
 
 const Home = () => {
+    const [currentImage, setCurrentImage] = useState(0);
+
+    const images = [
+        food2Image,
+        food3Image,
+    ];
+
+    const handleAnimationEnd = (e) => {
+        // Resetting animation by removing and re-adding the CSS class
+        e.target.classList.remove('fade-from-right');
+        void e.target.offsetWidth; // Trigger reflow to force repaint
+        e.target.classList.add('fade-from-right');
+
+        setCurrentImage((prevImage) => {
+            const nextImageIndex = prevImage >= images.length - 1 ? 0 : prevImage + 1;
+            console.log(nextImageIndex)
+            return nextImageIndex;
+        });
+    };
+
     return(
         <div className="home-page">
                 <div className="row">
@@ -12,10 +32,8 @@ const Home = () => {
                     
                     </div>
                     <div className="col">
-                        <img src={food3Image} className="fade-from-right img-fluid" alt="Image 1" />
-                        {/* <img src={food2Image} width="300" height = "300" className="fade-in-from-right" alt="Image 2" />
-                        <img src={food3Image}  width="300" height = "300" className="fade-in-from-right" alt="Image 3"/> */}
-                    
+                        <img src={images[currentImage]} className="fade-from-right" alt={`Image ${currentImage + 1}`} onAnimationEnd={handleAnimationEnd}/>
+                
                     </div>
                 </div>
         </div>
