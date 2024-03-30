@@ -1,7 +1,12 @@
+@font-face {
+  font-family: roboto;
+  src: url('../../fonts/Roboto/Roboto-Bold.ttf');
+}
+
 .navbar {
   height: 80px;
   background-image: linear-gradient(to bottom,#0b6a3c,#0c7f47	);
-  font-family: "Open Sans", sans-serif;
+  font-family: roboto, sans-serif;
   -webkit-box-shadow: 0 20px 20px 20px #999;
   -moz-box-shadow: 0 20px 20px -20px #999;
   box-shadow: 0 20px 20px -20px #999;
