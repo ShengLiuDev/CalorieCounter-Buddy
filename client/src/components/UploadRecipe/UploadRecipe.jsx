@@ -10,7 +10,7 @@ function UploadRecipe() {
     ]);
 
     const[inputFields2, setInputFields2] = useState([
-        {instructions: ''}
+        {steps: ''}
     ]);
 
     const [inputFieldsTags, setInputFieldsTags] = useState([
@@ -36,18 +36,24 @@ function UploadRecipe() {
 
     const [formData, setFormData] = useReducer(formReducer, {});
     const [submitting, setSubmitting] = useState(false);
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        const tagsArray = inputFieldsTags.map(tagObject => tagObject.tags);
+        const nonEmptyTagsArray = tagsArray.filter(tag => tag.trim() !== '');
+
+        const stepsArray = inputFields2.map(stepObject => stepObject.steps);
+        const nonEmptyStepsArray = stepsArray.filter(step => step.trim() !== '');
+
         const updatedFormData = {
             ...formData,
             ingredients: inputFields,
-            instructions: inputFields2, 
-            tags: inputFieldsTags,
+            steps: nonEmptyStepsArray, 
+            tags: nonEmptyTagsArray,
             today: new Date()
         };
         
-        console.log(updatedFormData);
-        const response = axios.post('http://localhost:3001/api/recipes', updatedFormData);
+        //console.log(updatedFormData);
+        const response = await axios.post('http://localhost:3001/api/recipes', updatedFormData);
         console.log(response.data);
 
         setSubmitting(true);
@@ -95,7 +101,7 @@ function UploadRecipe() {
 
      const addFields2 = (e) => {
         e.preventDefault();
-        let newfield = {instructions: ''}
+        let newfield = {steps: ''}
         setInputFields2([...inputFields2, newfield])
      }
 
@@ -144,7 +150,7 @@ function UploadRecipe() {
                             return(
                                 <div key = {index}>
                                     <p>Instruction</p>
-                                    <input name="instructions" onChange={event => handleFormChange2(index, event)} value={input.instructions || ''}/>
+                                    <input name="steps" onChange={event => handleFormChange2(index, event)} value={input.steps || ''}/>
                                 </div>
                             )
                         })
