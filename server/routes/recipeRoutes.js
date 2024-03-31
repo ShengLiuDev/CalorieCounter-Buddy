@@ -37,6 +37,12 @@ router.get('/:_id', (request, response) => {
 // CREATE a new recipe
 router.post('/', (request, response) => {
     const recipe = new Recipe(request.body);
+
+    recipe.nutritionalInformation.calories = 200;
+    recipe.nutritionalInformation.protein = 200;
+    recipe.nutritionalInformation.fat = 200;
+    recipe.nutritionalInformation.carbohydrates = 200;
+
     recipe.save()
     .then(savedRecipe => {
         response.status(201).json(savedRecipe);
