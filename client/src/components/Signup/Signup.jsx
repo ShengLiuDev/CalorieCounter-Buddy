@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { doCreateUserWithEmailAndPassord, doSignInWithEmailAndPassword, doSignInWithGoogle } from '../../firebase/auth';
 import { useAuth } from '../../contexts/authContext';
 import revealPassword from "../../icons/reveal-password.png"
+import './Signup.css';
 
 import { Icon } from 'react-icons-kit';
 import { eye } from 'react-icons-kit/entypo/eye';

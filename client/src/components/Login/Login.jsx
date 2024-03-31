@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { doSignInWithEmailAndPassword, doSignInWithGoogle } from '../../firebase/auth';
 import { useAuth } from '../../contexts/authContext';
+import './Login.css';
 
 import { Icon } from 'react-icons-kit';
 import { eye } from 'react-icons-kit/entypo/eye';
