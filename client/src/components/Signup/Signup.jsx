@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { doCreateUserWithEmailAndPassord, doSignInWithEmailAndPassword, doSignInWithGoogle } from '../../firebase/auth';
 import { useAuth } from '../../contexts/authContext';
 import revealPassword from "../../icons/reveal-password.png"
+import './Signup.css';
 
 import { Icon } from 'react-icons-kit';
 import { eye } from 'react-icons-kit/entypo/eye';
@@ -121,6 +122,9 @@ const Signup = () => {
                             onChange={(e) => setConfirmPassword(e.target.value)} 
                             required
                         />
+                        <p>
+                          
+                        </p>
                         <div className="input-group-append">
                             <span className="flex justify-around items-center" onClick={togglePasswordVisibility}>
                                 <Icon className="absolute mr-10" icon={icon} size={20}/>
@@ -128,7 +132,7 @@ const Signup = () => {
                         </div>
                     </div>
                 </div>
-  
+                
                 <div className='d-grid gap-2'>
                   <button type='submit' className='btn btn-primary' disabled={isSigningUp}>Signup</button>
                   <button onClick={onGoogleSignup} className='btn btn-danger' disabled={isSigningUp}>Sign up with Google</button>
