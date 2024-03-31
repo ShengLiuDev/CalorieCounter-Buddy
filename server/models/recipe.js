@@ -36,16 +36,26 @@ const recipeSchema = new mongoose.Schema({
         type: [String],
         required: true
     },
+    minutes: {
+        type: Number,
+        required: true
+    },
     nutritionalInformation: {
         calories: { type: Number, required: true },
         protein: { type: Number, required: true },
         fat: { type: Number, required: true },
         carbohydrates: { type: Number, required: true }
     },
-    photos: [String], // Array of photo URLs
-    author: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User' // Reference to the User model
+    photos: [String], 
+    description: {
+        type: String
+    },
+    tags: {
+        type: [String]
+    },
+    contributor_id: {
+        type: String,
+        required: true
     },
     createdAt: {
         type: Date,
