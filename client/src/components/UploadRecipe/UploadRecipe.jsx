@@ -89,7 +89,7 @@ function UploadRecipe() {
 
      const addFields = (e) => {
         e.preventDefault();
-        let newfield = {ingredients: '', quantity: '', measurement: ''}
+        let newfield = {name: '', quantity: '', measurement: ''}
         setInputFields([...inputFields, newfield])
      }
 
