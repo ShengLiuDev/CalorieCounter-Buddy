@@ -13,12 +13,19 @@ function UploadRecipe() {
         {instructions: ''}
     ]);
 
+    const [inputFieldsTags, setInputFieldsTags] = useState([
+        {tags: ''}
+    ]);
+
     const formReducer = (state, event) => {
         if(event.reset) {
             return {
               title: '',
               inputFields,
               inputFields2,
+              minutes: '', 
+              description: '', 
+              inputFieldsTags
             }
           }
         return {
@@ -34,7 +41,9 @@ function UploadRecipe() {
         const updatedFormData = {
             ...formData,
             ingredients: inputFields,
-            instructions: inputFields2
+            instructions: inputFields2, 
+            tags: inputFieldsTags,
+            today: new Date()
         };
         
         console.log(updatedFormData);
@@ -72,6 +81,12 @@ function UploadRecipe() {
         setInputFields2(data);
      }
 
+     const handleFormChangeTags = (index, event) => {
+        let data = [...inputFieldsTags];
+        data[index][event.target.name] = event.target.value;
+        setInputFieldsTags(data);
+     }
+
      const addFields = (e) => {
         e.preventDefault();
         let newfield = {ingredients: '', quantity: '', measurement: ''}
@@ -82,6 +97,12 @@ function UploadRecipe() {
         e.preventDefault();
         let newfield = {instructions: ''}
         setInputFields2([...inputFields2, newfield])
+     }
+
+     const addFieldsTags = (e) => {
+        e.preventDefault();
+        let newfield = {tags: ''}
+        setInputFieldsTags([...inputFieldsTags, newfield])
      }
 
     return( 
@@ -117,7 +138,7 @@ function UploadRecipe() {
             </fieldset>
             <button onClick={addFields}>Add Other Ingredient..</button>
             <fieldset>
-            <div>
+                <div>
                     {
                         inputFields2.map((input, index) => {
                             return(
@@ -131,7 +152,36 @@ function UploadRecipe() {
                 </div>
             </fieldset>
             <button onClick={addFields2}>Add Next Instruction</button>
-            <button onClick={handleSubmit}>Submit</button>
+            <fieldset>
+                <label>
+                    <p>Cooking Time (minutes)</p>
+                    <input type ="number" name="minutes" onChange={handleChange} value={formData.minutes || ''}/>
+                </label>
+            </fieldset>
+            <fieldset>
+                <label>
+                    <p>Description of Recipe</p>
+                    <input name="description" onChange={handleChange} value={formData.description || ''}></input>
+                </label>
+            </fieldset>
+            <fieldset>
+                <div>
+                    {
+                        inputFieldsTags.map((input, index) => {
+                            return(
+                                <div key = {index}>
+                                    <p>Add Relevant Tags</p>
+                                    <input name="tags" onChange={event => handleFormChangeTags(index, event)} value={input.tags || ''}/>
+                                </div>
+                            )
+                        })
+                    }    
+                </div>
+            </fieldset>
+            <button onClick={addFieldsTags}>Add Another Tag</button>
+            <fieldset>
+                <button onClick={handleSubmit}>Submit</button>
+            </fieldset>
             </form>
             </div>
         </div>
