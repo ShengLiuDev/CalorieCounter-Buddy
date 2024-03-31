@@ -1,20 +1,24 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer, useState, useEffect } from 'react';
+import axios from 'axios'; 
 import './UploadRecipe.css'
 
 
 function UploadRecipe() {
 
     const [inputFields, setInputFields] = useState([
-        {ingredients: '', quantity: '', measurement: ''}
+        {name: '', quantity: '', measurement: ''}
+    ]);
+
+    const[inputFields2, setInputFields2] = useState([
+        {instructions: ''}
     ]);
 
     const formReducer = (state, event) => {
         if(event.reset) {
             return {
-              recipename: '',
-              instructions: '',
+              title: '',
               inputFields,
-              'public': false,
+              inputFields2,
             }
           }
         return {
@@ -25,9 +29,18 @@ function UploadRecipe() {
 
     const [formData, setFormData] = useReducer(formReducer, {});
     const [submitting, setSubmitting] = useState(false);
-    const handleSubmit = event => {
-        event.preventDefault();
-        console.log(formData);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const updatedFormData = {
+            ...formData,
+            ingredients: inputFields,
+            instructions: inputFields2
+        };
+        
+        console.log(updatedFormData);
+        const response = axios.post('http://localhost:3001/api/recipes', updatedFormData);
+        console.log(response.data);
+
         setSubmitting(true);
 
         setTimeout(() => {
@@ -53,9 +66,22 @@ function UploadRecipe() {
         setInputFields(data);
      }
 
-     const addFields = () => {
+     const handleFormChange2 = (index, event) => {
+        let data = [...inputFields2];
+        data[index][event.target.name] = event.target.value;
+        setInputFields2(data);
+     }
+
+     const addFields = (e) => {
+        e.preventDefault();
         let newfield = {ingredients: '', quantity: '', measurement: ''}
         setInputFields([...inputFields, newfield])
+     }
+
+     const addFields2 = (e) => {
+        e.preventDefault();
+        let newfield = {instructions: ''}
+        setInputFields2([...inputFields2, newfield])
      }
 
     return( 
@@ -68,7 +94,7 @@ function UploadRecipe() {
             <fieldset>
                 <label>
                     <p>Name of Recipe</p>
-                    <input name="recipename" onChange={handleChange} value={formData.recipename || ''}/>
+                    <input name="title" onChange={handleChange} value={formData.title || ''}/>
                 </label>
             </fieldset>
             <fieldset>
@@ -78,7 +104,7 @@ function UploadRecipe() {
                             return(
                                 <div key = {index}>
                                     <p>Ingredient Name</p>
-                                    <input name="ingredients" onChange={event => handleFormChange(index, event)} value={input.ingredients || ''}/>
+                                    <input name="name" onChange={event => handleFormChange(index, event)} value={input.name || ''}/>
                                     <p>Quantity</p>
                                     <input name="quantity" onChange={event => handleFormChange(index, event)} value={input.quantity || ''}/>
                                     <p>Unit of Measurement</p>
@@ -89,20 +115,23 @@ function UploadRecipe() {
                     }    
                 </div>
             </fieldset>
-            <button onClick={addFields}>Add More..</button>
+            <button onClick={addFields}>Add Other Ingredient..</button>
             <fieldset>
-                <label>
-                    <p>Instructions</p>
-                    <input name="instructions" onChange={handleChange} value={formData.instructions || ''}/>
-                </label>
+            <div>
+                    {
+                        inputFields2.map((input, index) => {
+                            return(
+                                <div key = {index}>
+                                    <p>Instruction</p>
+                                    <input name="instructions" onChange={event => handleFormChange2(index, event)} value={input.instructions || ''}/>
+                                </div>
+                            )
+                        })
+                    }    
+                </div>
             </fieldset>
-            <fieldset>
-                <label>
-                    <p>Make Recipe Public?</p>
-                    <input type="checkbox" name="public" onChange={handleChange} checked={formData['public'] || false}/>
-                </label>
-            </fieldset>
-            <button type="submit">Submit</button>
+            <button onClick={addFields2}>Add Next Instruction</button>
+            <button onClick={handleSubmit}>Submit</button>
             </form>
             </div>
         </div>
