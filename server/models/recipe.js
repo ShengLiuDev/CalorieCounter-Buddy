@@ -27,13 +27,21 @@ const recipeSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    ingredients: [{
-        name: { type: String, required: true },
-        quantity: { type: String, required: true },
-        measurement: { type: String, required: true }
-    }],
+    ingredients: {
+        type: [String]
+    },
+    quantity: {
+        type: [Number]
+    },
+    measurement: {
+        type: [String]
+    },
     steps: {
         type: [String],
+        required: true
+    },
+    minutes: {
+        type: Number,
         required: true
     },
     nutritionalInformation: {
@@ -42,10 +50,16 @@ const recipeSchema = new mongoose.Schema({
         fat: { type: Number, required: true },
         carbohydrates: { type: Number, required: true }
     },
-    photos: [String], // Array of photo URLs
-    author: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User' // Reference to the User model
+    photos: [String],
+    description: {
+        type: String
+    },
+    tags: {
+        type: [String]
+    },
+    contributor_id: {
+        type: String,
+        required: true
     },
     createdAt: {
         type: Date,
