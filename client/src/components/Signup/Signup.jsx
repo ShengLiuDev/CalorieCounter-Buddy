@@ -3,6 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { doCreateUserWithEmailAndPassord, doSignInWithEmailAndPassword, doSignInWithGoogle } from '../../firebase/auth';
 import { useAuth } from '../../contexts/authContext';
 import revealPassword from "../../icons/reveal-password.png"
+import './Signup.css';
+
+import { Icon } from 'react-icons-kit';
+import { eye } from 'react-icons-kit/entypo/eye';
+import { withLine } from 'react-icons-kit/entypo/withLine';
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -14,6 +19,8 @@ const Signup = () => {
   const [passwordShown, setPasswordShown] = useState(false);
   const [isSigningUp, setIsSigningUp] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [type, setType] = useState('password');
+  const [icon, setIcon] = useState(withLine);
 
   const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
@@ -22,6 +29,14 @@ const Signup = () => {
   }
 
   const togglePasswordVisibility = () => {
+    if (type == 'password')
+    {
+        setIcon(eye);
+        setType('text');
+    } else {
+        setIcon(withLine);
+        setType('password');
+    }
     setPasswordShown(!passwordShown);
   }
 
@@ -85,36 +100,39 @@ const Signup = () => {
                     required
                   />
                 </div>
-                <div className='mb-3'>
-                  <label htmlFor='passwordInput' className='form-label'>Password</label>
-                  <input 
-                    type={passwordShown ? 'text' : 'password'} 
-                    className='form-control' 
-                    id='passwordInput' 
-                    value={password} 
-                    onChange={(e) => setPassword(e.target.value)} 
-                    required
-                  />
-                </div>
-                <div className='mb-4'>
-                  <label htmlFor='passwordInput2' className='form-label'>Re-Enter Password</label>
-                  <input 
-                    type={passwordShown ? 'text' : 'password'} 
-                    className='form-control' 
-                    id='passwordInput2' 
-                    value={confirmPassword} 
-                    onChange={(e) => setConfirmPassword(e.target.value)} 
-                    required
-                  />
-                </div>
                 <div>
-                    <input 
-                    type="checkbox" 
-                    checked={passwordShown}
-                    onChange={togglePasswordVisibility}
-                    
-                    /> Show password
+                    <div className='mb-3'>
+                        <label htmlFor='passwordInput' className='form-label'>Password</label>
+                        <input 
+                            type={passwordShown ? 'text' : 'password'} 
+                            className='form-control' 
+                            id='passwordInput' 
+                            value={password} 
+                            onChange={(e) => setPassword(e.target.value)} 
+                            required
+                        />
+                    </div>
+                    <div className='mb-4'>
+                        <label htmlFor='passwordInput2' className='form-label'>Re-Enter Password</label>
+                        <input 
+                            type={passwordShown ? 'text' : 'password'} 
+                            className='form-control' 
+                            id='passwordInput2' 
+                            value={confirmPassword} 
+                            onChange={(e) => setConfirmPassword(e.target.value)} 
+                            required
+                        />
+                        <p>
+                          
+                        </p>
+                        <div className="input-group-append">
+                            <span className="flex justify-around items-center" onClick={togglePasswordVisibility}>
+                                <Icon className="absolute mr-10" icon={icon} size={20}/>
+                            </span>
+                        </div>
+                    </div>
                 </div>
+                
                 <div className='d-grid gap-2'>
                   <button type='submit' className='btn btn-primary' disabled={isSigningUp}>Signup</button>
                   <button onClick={onGoogleSignup} className='btn btn-danger' disabled={isSigningUp}>Sign up with Google</button>

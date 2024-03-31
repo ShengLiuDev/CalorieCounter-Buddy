@@ -4,20 +4,14 @@
     align-items: center;
 }
 
-.login-title {
-    /* temp holder*/
+.link-primary {
+    color: green;
+    text-decoration: none;
 }
 
-.email-section {
-    /* temp holder*/
-}
-
-.password-section {
-    /* temp holder*/
-}
-
-.login-button {
-    /* temp holder*/
+.link-primary {
+    font-weight: bold; /* This will make the text bold when hovered */
+    text-decoration: underline; /* Optional: Adds underline on hover */
 }
 
 .signup-text {

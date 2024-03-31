@@ -4,21 +4,27 @@
     align-items: center;
 }
 
-.login-title {
-    /* temp holder*/
+.card-header {
+    font-weight: bolder;
 }
 
-.email-section {
-    /* temp holder*/
+.form-label {
+    font-weight: bold;
+    font-size: 16px;
 }
 
-.password-section {
-    /* temp holder*/
+.link-primary {
+    color: black !important;
+    text-decoration: none;
 }
 
-.login-button {
-    /* temp holder*/
-}
+.link-primary:not([href]):not([tabindex]),
+.link-primary:hover {
+    color: black !important;
+    font-weight: bold; /* This will make the text bold when hovered */
+    text-decoration: underline; /* Optional: Adds underline on hover */
+    text-decoration-color: black !important;
+  }
 
 .signup-text {
     color: rgb(121, 34, 139);

@@ -44,6 +44,10 @@ const recipeSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    minutes: {
+        type: Number,
+        required: true
+    },
     nutritionalInformation: {
         calories: { type: Number, required: true },
         protein: { type: Number, required: true },
