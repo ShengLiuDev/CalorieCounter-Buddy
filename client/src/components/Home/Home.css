@@ -1,3 +1,7 @@
+html {
+	scroll-behavior: smooth;
+}
+
 .text-color {
   color: white;
 }
@@ -36,6 +40,7 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 	font-family: arista-light;
 	background-color: white;
 	padding-top: 80px;
+	
 }
 
 .workout-video {
@@ -47,6 +52,52 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 	margin-top: -100px;
 	width: 100%;
 }
+
+.about-us-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 150px;
+	background-color: black;
+}
+
+.about-us-pictures {
+	flex-basis: 50%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates 2 columns of equal width */
+    grid-template-rows: repeat(2, auto); /* Creates enough rows for the content, sized to their content */
+    gap: 20px; /* This adds space between the grid items */
+}
+
+.professional-headshots {
+	width: 100%;
+	height: auto;
+	border: 2px solid black;
+}
+
+.about-us-content {
+    flex-basis: 50%; /* Takes up half the container's width */
+    padding-right: 5%; /* Add some padding to ensure it doesn't touch the edge of the container */
+    box-sizing: border-box; /* Include padding in the width calculation */
+	color: white;
+}
+
+.about-us-header {
+	font-family: arista-bold;
+	font-size: 50px;
+	text-align: center;
+	color: white;
+}
+
+.about-us-text {
+	font-family: arista-light;
+	font-size: 20px;
+	text-align: center;
+	color: white;
+	
+}
+
+
 
 
   
