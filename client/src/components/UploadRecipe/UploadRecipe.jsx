@@ -1,9 +1,16 @@
 import React, { useReducer, useState, useEffect } from 'react';
+import {useNavigate} from 'react-router-dom';
 import axios from 'axios'; 
+import { useAuth } from '../../contexts/authContext';
 import './UploadRecipe.css'
 
+//function UploadRecipe()
 
-function UploadRecipe() {
+
+
+const UploadRecipe = () => {
+
+    const { currentUser, userLoggedIn} = useAuth();
 
     const [inputFields, setInputFields] = useState([
         {name: '', quantity: '', measurement: ''}
@@ -25,7 +32,7 @@ function UploadRecipe() {
               inputFields2,
               minutes: '', 
               description: '', 
-              inputFieldsTags
+              inputFieldsTags, 
             }
           }
         return {
@@ -33,6 +40,8 @@ function UploadRecipe() {
           [event.name]: event.value
         }
     }
+
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useReducer(formReducer, {});
     const [submitting, setSubmitting] = useState(false);
@@ -44,12 +53,28 @@ function UploadRecipe() {
         const stepsArray = inputFields2.map(stepObject => stepObject.steps);
         const nonEmptyStepsArray = stepsArray.filter(step => step.trim() !== '');
 
+       
+        
+
+        if (!userLoggedIn) {
+            // If user is not logged in, redirect to the login page
+            navigate('/login') // Change '/login' to the path of your login page
+            return; // Exit the function to prevent further execution
+        }
+        
+        var contributor_id= '1234';
+
+        if(userLoggedIn){
+            contributor_id = currentUser.uid;
+        }
+
         const updatedFormData = {
             ...formData,
             ingredients: inputFields,
             steps: nonEmptyStepsArray, 
             tags: nonEmptyTagsArray,
-            today: new Date()
+            today: new Date(),
+            contributor_id
         };
         
         //console.log(updatedFormData);
