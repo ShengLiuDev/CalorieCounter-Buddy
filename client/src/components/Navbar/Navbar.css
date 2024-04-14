@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'arista-light';
-  src: url('/font/Arista-Pro-Light-trial.ttf') format('truetype');
+  src: url('/font/Arista-Pro-Light-trial.ttf');
 }
 
 @font-face {
@@ -10,31 +10,58 @@
 
 .navbar {
   min-height: 60px;
-  background-image: linear-gradient(to bottom,#0b6a3c,#0c7f47);
-  -webkit-box-shadow: 0 20px 20px 20px #999;
+  background-image: linear-gradient(to bottom, black, black);
+  /* -webkit-box-shadow: 0 20px 20px 20px #999;
   -moz-box-shadow: 0 20px 20px -20px #999;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.08), 0 10px 10px 0 rgba(0, 0, 0, 0.12);    
-  box-shadow: 0 20px 20px -20px #999;
+  box-shadow: 0 20px 20px -20px #999; */
   flex-wrap: nowrap;
   position: fixed; 
   /* ensures that the header follows us by fixing the position */
   width: 100%;
   height: auto;
+  z-index: 100;
+  /* ensures it stays on top of everything  */
 }
 
 .links {
   display: flex;
   align-items: center;
   color: white;
+  opacity: 100%;
 }
 
-.navbar a {
+.navbar .nav-link {
   font-weight: 415;
   color: white;
   text-decoration: none;
   margin: 20px;
   font-size: 25px;
   font-family: arista-light;
+  position: relative;
+}
+
+.navbar .nav-link:before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: white;
+  transition: width 0.25s ease-out;
+  transform: translateX(-50%);
+}
+
+.navbar .nav-link:hover:before {
+  width: 100%;
+  left: 0;
+  transform: translateX(0%);
+  color: white;
+}
+
+.login {
+  text-decoration: none;
 }
 
 img {

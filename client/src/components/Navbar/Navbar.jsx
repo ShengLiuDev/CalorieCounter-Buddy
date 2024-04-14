@@ -11,7 +11,7 @@ const Navbar = () => {
 
                 {/* Navbar brand */}
                 <Link className="navbar-brand" to="/home">
-                    <img src={GatorLogo} className="d-inline-block align-top img-responsive" alt="Gator Logo" width="90" height="50"/>
+                    <img src={GatorLogo} className="d-inline-block align-top img-responsive" alt="Gator Logo" width="110" height="70"/>
                 </Link>
 
                 {/* Navbar links */}
@@ -21,18 +21,20 @@ const Navbar = () => {
                         <Link className="nav-link" to="/home">Home</Link>
                         {/* Popular link */}
                         <Link className="nav-link" to="/popular">Popular</Link>
-                        {/* Calories link */}
-                        <Link className="nav-link" to="/calorie-counter">Upload Calories</Link>
                         {/* About Us link */}
                         <Link className="nav-link" to="/about">About Us</Link>
-                        {/* Upload Recipe link */}
-                        <Link className="nav-link" to="/upload-recipe">Upload Recipe</Link>
+                        {/* Contact Us link scrolls to bottom of page */}
+                        <Link className="nav-link">Contact Us</Link>
+                        {/* Calories link
+                        <Link className="nav-link" to="/calorie-counter">Upload Calories</Link> */}
+                        {/* Upload Recipe link
+                        <Link className="nav-link" to="/upload-recipe">Upload Recipe</Link> */}
                     </div>
                 </div>
                 {/*Stuff on the Right Hand Side */}
                 {/* Login link */}
                 <Link className="login" to="/login">
-                    <img src={LoginIcon} className="login d-inline-block align-top img-responsive" alt="Login Icon" width="30" height="30" />
+                    <img src={LoginIcon} className="login-icon" alt="Login Icon" width="30" height="30" />
                 </Link>
             </div>
         </nav>
