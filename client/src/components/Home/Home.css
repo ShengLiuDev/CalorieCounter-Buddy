@@ -22,15 +22,30 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 
 .home-icon {
 	width: 100%;
+	position: relative;
 }
 
 .homepage-text {
+	top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    /* transform: translate(-50%, -50%); Offset the position to truly center */
+    color: black; /* Set text color */
+    text-align: center; /* Align text */
+    width: 100%; /* Full width to align text properly */
+    font-size: 30px; /* Larger text */
 	font-family: arista-light;
-	color: purple;
-	font-size: 60px;
-	text-align: center;
-	justify-content: center;
+	background-color: white;
+	padding-top: 80px;
+}
 
+.workout-video {
+	align-items: left;
+	justify-content: left;	
+	padding: 200px;
+	position: relative;
+	display: block;
+	margin-top: -100px;
+	width: 100%;
 }
 
 
