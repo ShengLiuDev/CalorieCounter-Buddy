@@ -46,6 +46,8 @@ router.post('/', (request, response) => {
     recipe.save()
     .then(savedRecipe => {
         response.status(201).json(savedRecipe);
+        console.log('Successful');
+        console.log(recipe);
     })
     .catch(error => {
         console.error('Error creating recipe:', error.message);
