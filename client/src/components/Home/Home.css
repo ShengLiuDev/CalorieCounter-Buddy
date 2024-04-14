@@ -12,7 +12,18 @@ font-family: arista-bold;
 src: url('/font/Arista-Pro-Bold-trial.ttf');
 }
 
+.home-icon {
+	width: 100%;
+}
 
+.homepage-text {
+	font-family: arista-light;
+	color: purple;
+	font-size: 60px;
+	text-align: center;
+	justify-content: center;
+
+}
 
 
   
