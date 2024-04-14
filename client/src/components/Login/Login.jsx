@@ -34,7 +34,7 @@ const Login = () => {
   //redirect if the user is logged in 
   useEffect(() => {
     if (userLoggedIn) {
-      navigate('/home');
+      navigate('/profile');
     }
   }, [userLoggedIn, navigate]);
 
@@ -63,6 +63,8 @@ const Login = () => {
     }
     setIsSigningIn(false);
   }
+  // create userState method that stores checks if userisloggedin 
+  // (if so, reroute to profile page rather than login) 
 
   return (
     <div className='container mt-5'>

@@ -10,13 +10,15 @@ const Navbar = () => {
             <div className="container-fluid">
 
                 {/* Navbar brand */}
-                <Link className="navbar-brand" to="/">
+                <Link className="navbar-brand" to="/home">
                     <img src={GatorLogo} className="d-inline-block align-top img-responsive" alt="Gator Logo" width="90" height="50"/>
                 </Link>
 
                 {/* Navbar links */}
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <div className="collapse-navbar-collapse" id="navbarSupportedContent">
                     <div className="navbar-nav mr-auto"> {/* Use mr-auto to push navbar links to the left */}
+                        {/* Home link */}
+                        <Link className="nav-link" to="/home">Home</Link>
                         {/* Popular link */}
                         <Link className="nav-link" to="/popular">Popular</Link>
                         {/* Calories link */}
@@ -27,7 +29,6 @@ const Navbar = () => {
                         <Link className="nav-link" to="/upload-recipe">Upload Recipe</Link>
                     </div>
                 </div>
-
                 {/*Stuff on the Right Hand Side */}
                 {/* Login link */}
                 <Link className="login" to="/login">

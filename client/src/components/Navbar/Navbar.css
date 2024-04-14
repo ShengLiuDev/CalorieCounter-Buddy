@@ -1,11 +1,25 @@
+@font-face {
+  font-family: 'arista-light';
+  src: url('/font/Arista-Pro-Light-trial.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: arista-bold;
+  src: url('/font/Arista-Pro-Bold-trial.ttf');
+}
+
 .navbar {
-  height: 60px;
+  min-height: 60px;
   background-image: linear-gradient(to bottom,#0b6a3c,#0c7f47);
-  font-family: "Open Sans", sans-serif;
   -webkit-box-shadow: 0 20px 20px 20px #999;
   -moz-box-shadow: 0 20px 20px -20px #999;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.08), 0 10px 10px 0 rgba(0, 0, 0, 0.12);    
   box-shadow: 0 20px 20px -20px #999;
-  flex-wrap: nowrap
+  flex-wrap: nowrap;
+  position: fixed; 
+  /* ensures that the header follows us by fixing the position */
+  width: 100%;
+  height: auto;
 }
 
 .links {
@@ -19,7 +33,8 @@
   color: white;
   text-decoration: none;
   margin: 20px;
-  font-size: 15px;
+  font-size: 25px;
+  font-family: arista-light;
 }
 
 img {

@@ -27,14 +27,8 @@ const Home = () => {
 
     return(
         <div className="home-page">
-                <div className="row">
-                    <div className="col">
-                    
-                    </div>
-                    <div className="col">
-                        <img src={images[currentImage]} className="fade-from-right" alt={`Image ${currentImage + 1}`} onAnimationEnd={handleAnimationEnd}/>
-                
-                    </div>
+                <div className="home-page-banner-icon">
+                    <img src="header-banner.png" alt="Homepage Banner" className="home-icon"> Welcome to Calorie Counter Buddy! We are your one stop shop for your fitness goals. </img>
                 </div>
         </div>
     )

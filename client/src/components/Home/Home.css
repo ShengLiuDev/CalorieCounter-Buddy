@@ -6,6 +6,9 @@
 	position: relative;
 	opacity: 0;
 	animation: fadeInAndMoveFromRight 5s forwards;
+	max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 */
 }
   
 @keyframes fadeInAndMoveFromRight {
