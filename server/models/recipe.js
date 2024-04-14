@@ -58,5 +58,6 @@ recipeSchema.set('toJSON', {
     }
 })
 
+recipeSchema.index({ title: 'text', tags: 'text' });
 
 module.exports = mongoose.model('Recipe', recipeSchema)

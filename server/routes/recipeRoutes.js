@@ -37,7 +37,7 @@ router.get('/', async (request, response) => {
 });
 
 //GET Recipe by ID
-router.get('/:_id', (request, response) => {
+router.get('/id/:id', (request, response) => {
 	Recipe.findById(request.params._id)
 	.then(recipe => {
 		// If the recipe is found, return it in the response
@@ -55,6 +55,35 @@ router.get('/:_id', (request, response) => {
 	});
 })
 
+//Search recipe based on most relveant
+router.get('/search', async (req, res) => {
+    console.log("Searching up recipe");
+    const query = req.query.recipename; // Get the search query from the query parameters
+    const page = parseInt(req.query.page) || 1; // Get the page number, default to 1 if not provided
+    const pageSize = parseInt(req.query.pageSize) || 10; // Get the page size, default to 10 if not provided
+
+    try {
+        // Perform a text search for recipes with the given query
+        const recipes = await Recipe.find(
+            { $text: { $search: query } },
+            { score: { $meta: 'textScore' } }
+        )
+        .sort({ score: { $meta: 'textScore' } })
+        .skip((page - 1) * pageSize) // Skip documents based on the page number
+        .limit(pageSize); // Limit the number of documents returned per page
+
+        res.json({
+            recipes,
+            totalPages: Math.ceil(recipes.length / pageSize), // Calculate total pages based on the number of documents returned
+            currentPage: page,
+            totalResults: recipes.length
+        });
+    } catch (error) {
+        console.error('Error searching for recipes:', error.message);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+})
+
 // CREATE a new recipe
 router.post('/', (request, response) => {
     const recipe = new Recipe(request.body);
@@ -67,8 +96,6 @@ router.post('/', (request, response) => {
     recipe.save()
     .then(savedRecipe => {
         response.status(201).json(savedRecipe);
-        console.log('Successful');
-        console.log(recipe);
     })
     .catch(error => {
         console.error('Error creating recipe:', error.message);
