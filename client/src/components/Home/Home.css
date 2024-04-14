@@ -10,25 +10,17 @@
 	justify-content: center;
 }
 
-.fade-from-right {
-	position: relative;
-	width: 100%;
-	height: auto;
-	opacity: 0;
-	animation: fadeInAndMoveFromRight 5s forwards;
-	overflow: hidden;
+@font-face {
+	font-family: 'arista-light';
+	src: url('/font/Arista-Pro-Light-trial.ttf');
+  }
+  
+@font-face {
+font-family: arista-bold;
+src: url('/font/Arista-Pro-Bold-trial.ttf');
 }
 
-@keyframes fadeInAndMoveFromRight {
-	0% {
-		opacity: 0;
-		left: 10%;
-	}
-	100% {
-		left: 0;
-		opacity: 1; 
-	}
-}
+
 
 
   
