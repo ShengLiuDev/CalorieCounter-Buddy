@@ -10,13 +10,9 @@ const ingredientSchema = new mongoose.Schema({
         required: true
     },
     Cals_per100grams: {
-        type:String,
-        required: true
-    },
-    KJ_per100grams: {
         type:Number,
         required: true
-    }
+    },
 })
 
 ingredientSchema.set('toJSON', {
