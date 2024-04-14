@@ -3,23 +3,6 @@
 //Models are responsible for creating and reading documents from the underlying MongoDB database.
 
 const mongoose = require('mongoose') //import mongoose library to better handle MongoDB
-mongoose.set('strictQuery',false)   //set not strict on constraint checking and connect to our url
-
-
-//url for accessing our database
-const url = process.env.MONGODB_URI
-
-console.log('connecting to', url)
-
-//Try to connect to MongoDB Atlas
-mongoose.connect(url)
-    .then(result => {
-        console.log('connected to MongoDB')
-    })
-    .catch(error => {
-        console.log('error connecting to MongoDB:', error.message)
-    })
-
 
 //Define recipe schema
 const recipeSchema = new mongoose.Schema({

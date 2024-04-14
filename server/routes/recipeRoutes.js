@@ -1,18 +1,39 @@
 const express = require('express');
 const Recipe = require('../models/recipe');
+const mongoose = require('mongoose')
 
 const router = express.Router();
 
-// GET all recipes
-router.get('/', (request, response) => {
-    Recipe.find()
-    .then(recipes => {
-        response.json(recipes);
-    })
-    .catch(error => {
+// Middleware to log MongoDB connection status
+const checkDBConnection = (req, res, next) => {
+    const isConnected = mongoose.connection.readyState === 1;
+    console.log('MongoDB Connection Status:', isConnected ? 'Connected' : 'Disconnected');
+    next(); // Move to the next middleware or route handler
+};
+
+// Apply the middleware to all routes in this router
+router.use(checkDBConnection);
+
+// GET all recipes, seperated by pages
+router.get('/', async (request, response) => {
+    const page = parseInt(request.query.page) || 1;
+    const pageSize = parseInt(request.query.pageSize) || 10;
+
+    try {
+        const totalRecipes = await Recipe.countDocuments();
+        const recipes = await Recipe.find()
+            .skip((page - 1) * pageSize)
+            .limit(pageSize);
+
+        response.json({
+            recipes,
+            totalPages: Math.ceil(totalRecipes / pageSize),
+            currentPage: page
+        });
+    } catch (error) {
         console.error('Error fetching recipes:', error.message);
         response.status(500).json({ error: 'Internal server error' });
-    });
+    }
 });
 
 //GET Recipe by ID
