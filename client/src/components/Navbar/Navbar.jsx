@@ -22,7 +22,7 @@ const Navbar = () => {
                         {/* Popular link */}
                         <Link className="nav-link" to="/popular">Popular</Link>
                         {/* Calories link */}
-                        <Link className="nav-link" to="/calorie-counter">Calories</Link>
+                        <Link className="nav-link" to="/calorie-counter">Upload Calories</Link>
                         {/* About Us link */}
                         <Link className="nav-link" to="/about">About Us</Link>
                         {/* Upload Recipe link */}
