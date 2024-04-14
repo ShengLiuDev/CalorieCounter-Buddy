@@ -2,6 +2,14 @@
   color: white;
 }
 
+.search_bar {
+    width: 70%;
+	height: auto;
+    margin: auto;
+    display: block;
+	justify-content: center;
+}
+
 @font-face {
 	font-family: 'arista-light';
 	src: url('/font/Arista-Pro-Light-trial.ttf');
