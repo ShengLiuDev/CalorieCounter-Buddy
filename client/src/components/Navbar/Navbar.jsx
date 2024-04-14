@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 import GatorLogo from "../../icons/gatorlogo.png"
 import LoginIcon from "../../icons/my-account-login.svg"
+import SearchIcon from "../../icons/search.svg"
 
 const Navbar = () => {
     return (
@@ -32,10 +33,15 @@ const Navbar = () => {
                     </div>
                 </div>
                 {/*Stuff on the Right Hand Side */}
+                {/* Search link */}
+                <Link className="search" to="/search">
+                    <img src={SearchIcon} classname="search-icon" alt="Search Icon" width="20" height="20" />
+                </Link>
                 {/* Login link */}
                 <Link className="login" to="/login">
                     <img src={LoginIcon} className="login-icon" alt="Login Icon" width="30" height="30" />
                 </Link>
+                
             </div>
         </nav>
     );
