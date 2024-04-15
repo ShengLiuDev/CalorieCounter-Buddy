@@ -28,10 +28,10 @@ const Navbar = ({onScrollToSection}) => {
                         <Link className="nav-link" to="/">Home</Link>
                         {/* Popular link */}
                         <Link className="nav-link" to="/popular">Popular</Link>
-                        {/* About Us link */}
+                        {/* About Us link scrolls to about us section*/}
                         <a className="nav-link" href="#about-us" onClick={handleNavBarClick('about-us')}>About Us</a>
                         {/* Contact Us link scrolls to bottom of page */}
-                        <a className="nav-link" href="#contact-us" onClick={handleNavBarClick('about-us')}>Contact Us</a>
+                        <a className="nav-link" href="#contact-us" onClick={handleNavBarClick('contact-us')}>Contact Us</a>
                     </div>
                 </div>
                 {/*Stuff on the Right Hand Side */}

@@ -83,7 +83,39 @@ const Home = () => {
                             students for UF students, that's what we're proud of. 
                         </p>
                     </div>
-                    
+                </div>
+
+                <div ref={contactUsRef} id="contact-us" className="contact-us-section">
+                    <div className='contact-us-header'>
+                        Contact Us
+                        <hr></hr>
+
+                        <div className='contact-us-subtext'>
+                        <br></br>
+                            Need to get in touch with us? Either fill out this form 
+                            or send us an email at <span className='our-email'>caloriecounterbuddy@gmail.com</span>
+                        </div>
+                        <div className='contact-us-information'>
+                            <form className='first-name-form'>
+                                <label>
+                                    First Name:
+                                    <input type="text" firstName="first-name"/>
+                                </label>
+                            </form>
+                            <form className='last-name-form'>
+                                <label>
+                                    Last Name:
+                                    <input type="text" lastName="last-name"/>
+                                </label>
+                            </form>
+                            <form className='email-form'>
+                                <label> 
+                                    Email:
+                                    <input type="text" email="email"/>
+                                </label>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
