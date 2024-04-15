@@ -1,15 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import GatorLogo from "../../icons/gatorlogo.png"
 import LoginIcon from "../../icons/my-account-login.svg"
 import SearchIcon from "../../icons/search.svg"
 
 const Navbar = ({onScrollToSection}) => {
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const handleNavBarClick = (sectionID) => (event) => {
-        event.preventDefault();
-        onScrollToSection(sectionID);
+        if (sectionID === 'home') {
+            // Check if we're already on the homepage
+            if (location.pathname === '/') {
+                // Prevent the default anchor behavior
+                event.preventDefault();
+                // Scroll to the top of the page
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                // If we're not on the homepage, navigate to the homepage
+                navigate('/');
+            }
+        } else {
+            // Handle scrolling for 'about-us' or 'contact-us'
+            onScrollToSection(sectionID);
+        }
     }
 
     return (
@@ -25,7 +40,7 @@ const Navbar = ({onScrollToSection}) => {
                 <div className="collapse-navbar-collapse" id="navbarSupportedContent">
                     <div className="navbar-nav mr-auto"> {/* Use mr-auto to push navbar links to the left */}
                         {/* Home link */}
-                        <Link className="nav-link" to="/">Home</Link>
+                        <a className="nav-link" href="#home" onClick={handleNavBarClick('home')}>Home</a>
                         {/* Popular link */}
                         <Link className="nav-link" to="/popular">Popular</Link>
                         {/* About Us link scrolls to about us section*/}
