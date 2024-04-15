@@ -43,14 +43,17 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 	
 }
 
+.video-container {
+    padding: 200px;
+    position: relative;
+    display: block;
+    margin-top: -100px;
+    width: 100%;
+}
+
 .workout-video {
-	align-items: left;
-	justify-content: left;	
-	padding: 200px;
-	position: relative;
-	display: block;
-	margin-top: -100px;
-	width: 100%;
+    width: 100%;
+    height: auto;
 }
 
 .about-us-container {
@@ -73,13 +76,16 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 	width: 100%;
 	height: auto;
 	border: 2px solid black;
+	border-radius: 25px;
 }
 
 .about-us-content {
     flex-basis: 50%; /* Takes up half the container's width */
-    padding-right: 5%; /* Add some padding to ensure it doesn't touch the edge of the container */
+    padding: 5%; /* Add some padding to ensure it doesn't touch the edge of the container */
     box-sizing: border-box; /* Include padding in the width calculation */
 	color: white;
+	align-items: center;
+	justify-content: center;
 }
 
 .about-us-header {
@@ -91,7 +97,7 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 
 .about-us-text {
 	font-family: arista-light;
-	font-size: 20px;
+	font-size: 25px;
 	text-align: center;
 	color: white;
 	

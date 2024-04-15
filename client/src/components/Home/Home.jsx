@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'; 
+import React, { useState, useEffect, useRef } from 'react'; 
 import './Home.css';
 import mainHeader from '../../images/homepage-banner.jpg';
 import workoutVideos from '../../videos/index.js';
+import Navbar from '../Navbar/Navbar';
 
 import alvin from '../../images/alvin.jpg';
 import devika from '../../images/devika.jpg';
@@ -9,6 +10,19 @@ import johnny from '../../images/johnny.jpg';
 
 const Home = () => {
     const [videoIndex, setVideoIndex] = useState(0);
+    const aboutUsRef = useRef(null);
+    const contactUsRef = useRef(null);
+  
+    const onScrollToSection = (sectionID) => {
+      let ref;
+      if (sectionID === 'about-us') {
+        ref = aboutUsRef;
+      } 
+      else if (sectionID === 'contact-us') {
+        ref = contactUsRef;
+      }
+      ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
     
     useEffect(() => {
         const videoChangeInterval = setInterval(() => {
@@ -18,8 +32,10 @@ const Home = () => {
         return () => clearInterval(videoChangeInterval);
     }, []);
 
+    console.log("onScrollToSection function outputttttttttttttt: " + onScrollToSection);
     return (
         <section>
+            <Navbar onScrollToSection={onScrollToSection} />
             <div className="home-page">
                 <div className="home-page-banner-icon">
                     <img src={mainHeader} alt="Homepage Banner" className="home-icon" />
@@ -36,11 +52,13 @@ const Home = () => {
                                 share your own recipes with your friends all here. 
                             </div>   
                     </div>
-                    <video src={workoutVideos[videoIndex]} width="100%" height="auto" muted autoPlay loop className="workout-video"/>
-                    <hr></hr>
+                    <div className='video-container'>
+                        <video src={workoutVideos[videoIndex]} width="100%" height="auto" muted autoPlay loop className="workout-video"/>
+
+                    </div>
                 </div>
-                <div className="about-us-container">
                 
+                <div ref={aboutUsRef} id="about-us" className="about-us-container" >
                     <div className='about-us-pictures'>
                         <img src={johnny} className='professional-headshots'></img>
                         <img src={alvin} className='professional-headshots'></img>

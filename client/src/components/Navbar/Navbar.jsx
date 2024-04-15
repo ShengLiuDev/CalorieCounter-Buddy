@@ -5,7 +5,13 @@ import GatorLogo from "../../icons/gatorlogo.png"
 import LoginIcon from "../../icons/my-account-login.svg"
 import SearchIcon from "../../icons/search.svg"
 
-const Navbar = () => {
+const Navbar = ({onScrollToSection}) => {
+
+    const handleNavBarClick = (sectionID) => (event) => {
+        event.preventDefault();
+        onScrollToSection(sectionID);
+    }
+
     return (
         <nav className="navbar navbar-expand-sm">
             <div className="container-fluid">
@@ -23,19 +29,15 @@ const Navbar = () => {
                         {/* Popular link */}
                         <Link className="nav-link" to="/popular">Popular</Link>
                         {/* About Us link */}
-                        <Link className="nav-link" to="/about">About Us</Link>
+                        <a className="nav-link" href="#about-us" onClick={handleNavBarClick('about-us')}>About Us</a>
                         {/* Contact Us link scrolls to bottom of page */}
-                        <Link className="nav-link">Contact Us</Link>
-                        {/* Calories link
-                        <Link className="nav-link" to="/calorie-counter">Upload Calories</Link> */}
-                        {/* Upload Recipe link
-                        <Link className="nav-link" to="/upload-recipe">Upload Recipe</Link> */}
+                        <a className="nav-link" href="#contact-us" onClick={handleNavBarClick('about-us')}>Contact Us</a>
                     </div>
                 </div>
                 {/*Stuff on the Right Hand Side */}
                 {/* Search link */}
                 <Link className="search" to="/search">
-                    <img src={SearchIcon} classname="search-icon" alt="Search Icon" width="20" height="20" />
+                    <img src={SearchIcon} className="search-icon" alt="Search Icon" width="20" height="20" />
                 </Link>
                 {/* Login link */}
                 <Link className="login" to="/login">
