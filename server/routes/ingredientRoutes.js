@@ -21,6 +21,7 @@ router.get('/', async (request, response) => {
             totalPages: Math.ceil(totalIngredients / pageSize),
             currentPage: page
         });
+        console.log("get/");
     } catch (error) {
         console.error('Error fetching ingredients:', error.message);
         response.status(500).json({ error: 'Internal server error' });
@@ -34,6 +35,7 @@ router.get('/:_id', (request, response) => {
 		// If the recipe is found, return it in the response
 		if (ingredient) {
 			response.json(ingredient);
+            console.log("get/id");
 		} else {
 			// If the recipe is not found, return a 404 Not Found error
 			response.status(404).json({ error: 'Ingredient not found' });
@@ -55,9 +57,11 @@ router.get('/name/:name', async (request, response) => {
 
         // Check if any ingredients are found
         if (ingredients.length > 0) {
-            response.json(ingredients[0]);
+            response.json(ingredients[0].Cals_per100grams);
+            console.log("get/name");
         } else {
             response.status(404).json({ error: 'Ingredient not found' });
+            console.log(name);
         }
     } catch (error) {
         console.error('Error finding ingredient by name:', error.message);
