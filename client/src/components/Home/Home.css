@@ -113,8 +113,8 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 	font-family: arista-bold;
 	font-size: 50px;
 	color: black;
-	text-align: center;
 	margin-bottom: 20px;
+	text-align: center;
 }
 
 .contact-us-subtext {
@@ -167,6 +167,8 @@ form label {
 
 input[type='text'] {
 	width: 100%; 
+	min-width: 400px;
+	max-width: 500px;
 	padding: 10px;
 	margin-top: 5px; 
 	border: 2px solid #80BDFF; 
