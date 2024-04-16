@@ -10,7 +10,7 @@ const Navbar = ({onScrollToSection}) => {
     const navigate = useNavigate();
 
     const handleNavBarClick = (sectionID) => (event) => {
-        if (sectionID === 'home') {
+        if (sectionID === 'home') {   
             // Check if we're already on the homepage
             if (location.pathname === '/') {
                 // Prevent the default anchor behavior

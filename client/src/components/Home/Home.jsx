@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'; 
+import emailjs from '@emailjs/browser';
 import './Home.css';
+import ContactForm from './ContactForm';'./ContactForm.js';
 import mainHeader from '../../images/homepage-banner.jpg';
 import workoutVideos from '../../videos/index.js';
 import Navbar from '../Navbar/Navbar';
@@ -10,6 +12,7 @@ import johnny from '../../images/johnny.jpg';
 
 const Home = () => {
     const [videoIndex, setVideoIndex] = useState(0);
+    const homeRef = useRef(null);
     const aboutUsRef = useRef(null);
     const contactUsRef = useRef(null);
   
@@ -20,6 +23,9 @@ const Home = () => {
       } 
       else if (sectionID === 'contact-us') {
         ref = contactUsRef;
+      }
+      else if (sectionID === 'homepage') {
+        ref = homeRef;
       }
       ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
@@ -32,12 +38,12 @@ const Home = () => {
         return () => clearInterval(videoChangeInterval);
     }, []);
 
-    console.log("onScrollToSection function outputttttttttttttt: " + onScrollToSection);
+
     return (
         <section>
             <Navbar onScrollToSection={onScrollToSection} />
             <div className="home-page">
-                <div className="home-page-banner-icon">
+                <div className="home-page-banner-icon" id='homepage'>
                     <img src={mainHeader} alt="Homepage Banner" className="home-icon" />
                     {/* Place your welcome text outside of the img tag */}
                     <div className="homepage-text"> 
@@ -66,7 +72,6 @@ const Home = () => {
                     </div>
                     <div className="about-us-content">
                         <div className="about-us-header">
-                            
                             About Us
                         </div>
                         <p className="about-us-text">
@@ -84,38 +89,8 @@ const Home = () => {
                         </p>
                     </div>
                 </div>
-
                 <div ref={contactUsRef} id="contact-us" className="contact-us-section">
-                    <div className='contact-us-header'>
-                        Contact Us
-                        <hr></hr>
-
-                        <div className='contact-us-subtext'>
-                        <br></br>
-                            Need to get in touch with us? Either fill out this form 
-                            or send us an email at <span className='our-email'>caloriecounterbuddy@gmail.com</span>
-                        </div>
-                        <div className='contact-us-information'>
-                            <form className='first-name-form'>
-                                <label>
-                                    First Name:
-                                    <input type="text" firstName="first-name"/>
-                                </label>
-                            </form>
-                            <form className='last-name-form'>
-                                <label>
-                                    Last Name:
-                                    <input type="text" lastName="last-name"/>
-                                </label>
-                            </form>
-                            <form className='email-form'>
-                                <label> 
-                                    Email:
-                                    <input type="text" email="email"/>
-                                </label>
-                            </form>
-                        </div>
-                    </div>
+                    <ContactForm />
                 </div>
             </div>
         </section>

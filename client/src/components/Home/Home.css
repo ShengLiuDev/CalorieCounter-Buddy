@@ -149,7 +149,6 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 	right: 0;
 }
 
-
 .contact-us-information form {
 	font-family: arista-light;
 	font-size: 25px;
@@ -173,12 +172,25 @@ input[type='text'] {
 	border: 2px solid #80BDFF; 
 	border-radius: 5px; 
 	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-  }
+	font-family: "MrGeorge", sans-serif;
+}
   
-  input[type='text']:focus {
-	border-color: #0056b3;
-	outline: 0; 
-  }
+input[type='text']:focus {
+border-color: #0056b3;
+outline: 0; 
+}
+
+textarea[name='message'] {
+	font-size: 20px;
+	font-family: sans-serif;
+	border-radius: 5px;
+	width: 100%;
+	height: auto;
+	min-width: 300px;
+	min-height: 150px;
+	
+}
+
 
 
   
