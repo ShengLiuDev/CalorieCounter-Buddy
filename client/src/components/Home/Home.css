@@ -27,6 +27,8 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 .home-icon {
 	width: 100%;
 	position: relative;
+	height: 100vh;
+	object-fit: cover;
 }
 
 .home-page {
@@ -35,8 +37,8 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 }
 
 .homepage-text {
-	top: 50%; 
-    left: 50%; 
+	/* top: 50%; 
+    left: 50%;  */
     color: black;
     text-align: center; 
     width: 100%; 
@@ -44,7 +46,6 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 	font-family: arista-light;
 	background-color: white;
 	padding-top: 80px;
-	
 }
 
 .video-container {
@@ -52,7 +53,8 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
     position: relative;
     display: block;
     margin-top: -100px;
-    width: 100%;
+    width: 80%;
+	margin: auto;
 }
 
 .workout-video {
@@ -66,6 +68,7 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 	align-items: center;
 	padding: 150px;
 	background-color: black;
+	height: 100vh;
 }
 
 .about-us-pictures {
@@ -112,7 +115,8 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 	align-items: center;
 	padding: 100px;
 	height: auto;
-	min-height: 100vh;
+	height: calc(100vh - 100px);
+	scroll-margin-top: 100px;
 }
 
 .contact-us-header {

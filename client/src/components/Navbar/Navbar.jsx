@@ -41,12 +41,12 @@ const Navbar = ({onScrollToSection}) => {
                     <div className="navbar-nav mr-auto"> {/* Use mr-auto to push navbar links to the left */}
                         {/* Home link */}
                         <a className="nav-link" href="#home" onClick={handleNavBarClick('home')}>Home</a>
-                        {/* Popular link */}
-                        <Link className="nav-link" to="/popular">Popular</Link>
                         {/* About Us link scrolls to about us section*/}
                         <a className="nav-link" href="#about-us" onClick={handleNavBarClick('about-us')}>About Us</a>
                         {/* Contact Us link scrolls to bottom of page */}
                         <a className="nav-link" href="#contact-us" onClick={handleNavBarClick('contact-us')}>Contact Us</a>
+                        {/* Popular link */}
+                        <Link className="nav-link" to="/popular">Popular</Link>
                     </div>
                 </div>
                 {/*Stuff on the Right Hand Side */}
