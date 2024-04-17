@@ -38,6 +38,14 @@ const ContactForm = () => {
         <div className='contact-us-header'>
             Contact Us
             <hr></hr>
+            <div className='contact-us-subtext'>
+                <br/>
+                Need to get in touch with us? Either fill out this form 
+                or send us an email at&nbsp;
+                <span className='our-email'>
+                    caloriecounterbuddy@gmail.com
+                </span>
+            </div>
             <div className='contact-us-information'>
                 <form ref={formRef} onSubmit={sendEmail} className='contact-us-form'>
                     <label>

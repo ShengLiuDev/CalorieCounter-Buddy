@@ -29,14 +29,18 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 	position: relative;
 }
 
+.home-page {
+	height: 100vh;
+	width: 100%;
+}
+
 .homepage-text {
-	top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    /* transform: translate(-50%, -50%); Offset the position to truly center */
-    color: black; /* Set text color */
-    text-align: center; /* Align text */
-    width: 100%; /* Full width to align text properly */
-    font-size: 30px; /* Larger text */
+	top: 50%; 
+    left: 50%; 
+    color: black;
+    text-align: center; 
+    width: 100%; 
+    font-size: 30px;
 	font-family: arista-light;
 	background-color: white;
 	padding-top: 80px;
@@ -107,6 +111,8 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 	flex-direction: column;
 	align-items: center;
 	padding: 100px;
+	height: auto;
+	min-height: 100vh;
 }
 
 .contact-us-header {
@@ -157,6 +163,7 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 	width: 100%;
 	max-width: 500px;
 	gap: 20px;
+	height: auto;
 }
 
 form label {
