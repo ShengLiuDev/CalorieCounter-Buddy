@@ -46,7 +46,7 @@ const Navbar = ({onScrollToSection}) => {
                         {/* Contact Us link scrolls to bottom of page */}
                         <a className="nav-link" href="#contact-us" onClick={handleNavBarClick('contact-us')}>Contact Us</a>
                         {/* Popular link */}
-                        <Link className="nav-link" to="/popular">Popular</Link>
+                        <Link className="nav-link" to="/popular">Popular Recipes</Link>
                     </div>
                 </div>
                 {/*Stuff on the Right Hand Side */}
