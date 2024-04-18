@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { doCreateUserWithEmailAndPassord, doSignInWithEmailAndPassword, doSignInWithGoogle } from '../../firebase/auth';
+import { createUser, doSignInWithGoogle } from '../../firebase/auth';
 import { useAuth } from '../../contexts/authContext';
 import revealPassword from "../../icons/reveal-password.png"
 import './Signup.css';
@@ -19,6 +19,7 @@ const Signup = () => {
   const [passwordShown, setPasswordShown] = useState(false);
   const [isSigningUp, setIsSigningUp] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [confirmationMessage, setConfirmationMessage] = useState('');
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState(withLine);
 
@@ -40,12 +41,12 @@ const Signup = () => {
     setPasswordShown(!passwordShown);
   }
 
-  //redirect if the user is signedup to the login page
-  useEffect(() => {
-    if (userSignedup) {
-      navigate('/login');
-    }
-  }, [userSignedup, navigate]);
+  // //redirect if the user is signedup to the login page
+  // useEffect(() => {
+  //   if (userSignedup) {
+  //     navigate('/login');
+  //   }
+  // }, [userSignedup, navigate]);
 
   const onSubmit = async(e) => {
     e.preventDefault()
@@ -53,12 +54,16 @@ const Signup = () => {
         setErrorMessage("Passwords do not match or do not meet the criteria");
         return;
     }
-    setIsSigningUp(true);
+    setIsSigningUp(true); // once signed up this is causing error
 
     try {
-        await doCreateUserWithEmailAndPassord(email, password); 
-        // make sure to use correct function for signing up
-        navigate('/login');        
+        await createUser(email, password); 
+        // make sure to use correct function for signing up]
+        console.log("user account was created and stored");
+        setConfirmationMessage("Account successfully created!");
+        setEmail('');
+        setPassword('');
+        setConfirmPassword('');
     }
     catch (error) {
         setErrorMessage(error.message);
@@ -68,7 +73,7 @@ const Signup = () => {
 
   const onGoogleSignup = async(e) => {
     e.preventDefault()
-    setIsSigningup(true);
+    setIsSigningUp(true);
 
     try {
       await doSignupWithGoogle(); // same function for signing in with google, so just go home
@@ -81,13 +86,16 @@ const Signup = () => {
   }
 
   return (
-    <div className='container mt-5'>
+    // <div className='container mt-5'> causing white border at top
       <div className='row justify-content-center'>
         <div className='col-md-6'>
           <div className='card'>
-            <h2 className='card-header text-center'>Signup</h2>
+            <h2 className='card-header text-center'>
+              Signup
+            </h2>
             <div className='card-body'>
               {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}
+              {confirmationMessage && <div className="alert alert-success" role="notification">{confirmationMessage}</div>}
               <form onSubmit={onSubmit}>
                 <div className='mb-3'>
                   <label htmlFor='emailInput' className='form-label'>Email</label>
@@ -104,7 +112,7 @@ const Signup = () => {
                     <div className='mb-3'>
                         <label htmlFor='passwordInput' className='form-label'>Password</label>
                         <input 
-                            type={passwordShown ? 'text' : 'password'} 
+                            type={passwordShown ? 'passwordText' : 'password'} 
                             className='form-control' 
                             id='passwordInput' 
                             value={password} 
@@ -115,7 +123,7 @@ const Signup = () => {
                     <div className='mb-4'>
                         <label htmlFor='passwordInput2' className='form-label'>Re-Enter Password</label>
                         <input 
-                            type={passwordShown ? 'text' : 'password'} 
+                            type={passwordShown ? 'passwordText' : 'password'} 
                             className='form-control' 
                             id='passwordInput2' 
                             value={confirmPassword} 
@@ -126,7 +134,7 @@ const Signup = () => {
                           
                         </p>
                         <div className="input-group-append">
-                            <span className="flex justify-around items-center" onClick={togglePasswordVisibility}>
+                            <span className="flex" onClick={togglePasswordVisibility}>
                                 <Icon className="absolute mr-10" icon={icon} size={20}/>
                             </span>
                         </div>
@@ -145,7 +153,7 @@ const Signup = () => {
           </div>
         </div>
       </div>
-    </div>
+    // </div>
   );
 };
 

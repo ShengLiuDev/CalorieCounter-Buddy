@@ -33,7 +33,7 @@ const Navbar = ({onScrollToSection}) => {
 
                 {/* Navbar brand */}
                 <Link className="navbar-brand" to="/">
-                    <img src={GatorLogo} className="d-inline-block align-top img-responsive" alt="Gator Logo" width="110" height="70"/>
+                    <img src={GatorLogo} className="d-inline-block align-top img-responsive" alt="Gator Logo" width="110" height="70" onClick={handleNavBarClick('home')}/>
                 </Link>
 
                 {/* Navbar links */}

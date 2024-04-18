@@ -1,6 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import Login from '../../components/Login/Login'
+import React from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Login from '../../components/Login/Login';
+import './Profile.css';
 
 const Profile = () => {
-    print("WAHOOOOOOOOO TESTING TESTING TESTIGIGIIGNINGNGINGINGININGING");
-}
+    console.log("WAHOOOOOOOOO TESTING TESTING TESTI");
+
+    return (
+        <section>
+            <div className="profile-container">
+                <div className="profile-header-text">
+                    something
+                </div>
+            </div>
+        </section>
+    );
+};

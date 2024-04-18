@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { doSignInWithEmailAndPassword, doSignInWithGoogle } from '../../firebase/auth';
+import { signIn, doSignInWithGoogle } from '../../firebase/auth';
 import { useAuth } from '../../contexts/authContext';
 import './Login.css';
 
@@ -43,7 +43,7 @@ const Login = () => {
     setIsSigningIn(true);
 
     try {
-      await doSignInWithEmailAndPassword(email, password);
+      await signIn(email, password);
     } 
     catch (error){
       setErrorMessage(error.message);
@@ -67,7 +67,7 @@ const Login = () => {
   // (if so, reroute to profile page rather than login) 
 
   return (
-    <div className='container mt-5'>
+    // <div className='container mt-5'> causes white border at top
       <div className='row justify-content-center'>
         <div className='col-md-6'>
           <div className='card'>
@@ -90,7 +90,7 @@ const Login = () => {
                   <div className='mb-3'>
                     <label htmlFor='passwordInput' className='form-label'>Password</label>
                     <input 
-                      type={passwordShown ? 'text' : 'password'} 
+                      type={passwordShown ? 'passwordText' : 'password'} 
                       className='form-control' 
                       id='passwordInput' 
                       value={password} 
@@ -119,7 +119,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </div>
+    // </div>
   );
 };
 

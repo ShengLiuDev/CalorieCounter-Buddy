@@ -4,7 +4,6 @@ import {ref, set, get, child} from 'firebase/database';
 
 export const writeUserData = async (userId, currCalorie) => {
 
-
     get(child(ref(database), userId)).then((snapshot) => {
         if (snapshot.exists()) {
           const cc = snapshot.val().caloriesConsumed;
@@ -26,8 +25,6 @@ export const writeUserData = async (userId, currCalorie) => {
         }
       })   
   }
-
-
 
   export const getUserData = (userId) => {
     get(child(ref(database), userId)).then((snapshot) => {

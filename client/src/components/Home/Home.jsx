@@ -33,7 +33,7 @@ const Home = () => {
     useEffect(() => {
         const videoChangeInterval = setInterval(() => {
             setVideoIndex((current) => (current + 1) % workoutVideos.length); // Loop through videos
-        }, 10000);
+        }, 9500);
 
         return () => clearInterval(videoChangeInterval);
     }, []);
@@ -59,8 +59,8 @@ const Home = () => {
                             </div>   
                     </div>
                     <div className='video-container'>
-                        <video src={workoutVideos[videoIndex]} width="100%" height="auto" muted autoPlay loop className="workout-video"/>
-
+                        {/* <video src={workoutVideos[videoIndex]} width="100%" height="auto" preload="auto" muted autoPlay loop onended="this.player()" className="workout-video" type="video/webm"/> */}
+                        <video src={workoutVideos[videoIndex]} width="100%" height="auto" preload="auto" mute="true" autoPlay={true} loop="true" className="workout-video" type="video/mp4"/>
                     </div>
                 </div>
                 

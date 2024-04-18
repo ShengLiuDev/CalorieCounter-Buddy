@@ -1,16 +1,33 @@
 import { auth } from "./firebase";
 import {database} from "./firebase";
 import {set, ref} from 'firebase/database';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword as firebaseCreateUserWithEmailAndPassword, signInWithEmailAndPassword as firebaseSignInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut as firebaseSignOut } from "firebase/auth";
 
-
-export const doCreateUserWithEmailAndPassord = async (email, password) => {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+export const createUser = async (email, password) => {
+    const userCredential = await firebaseCreateUserWithEmailAndPassword(auth, email, password);
     const userID = userCredential.user.uid;
     await initializeUserData(userID);
     return userCredential;
 };
 
+export const signIn = (email, password) => {
+    return firebaseSignInWithEmailAndPassword(auth, email, password);
+};
+
+export const doSignInWithGoogle = async () => {
+    const provider = new GoogleAuthProvider();
+    const result = signInWithPopup(auth, provider);
+    // to store user login information use: result.user
+    return result;
+};
+
+export const signOut = async() => {
+  try {
+    await firebaseSignOut(auth);
+  } catch(error) {
+    console.log("Sign out error", error.message);
+  }
+};
 
 async function initializeUserData(userID) {
     try {
@@ -24,33 +41,3 @@ async function initializeUserData(userID) {
       throw error;
     }
   }
-
-export const doSignInWithEmailAndPassword = (email, password) => {
-    return signInWithEmailAndPassword(auth, email, password);
-};
-
-export const doSignInWithGoogle = async () => {
-    const provider = new GoogleAuthProvider();
-    const result = await signInWithPopup(auth, provider);
-    // to store user login information use: result.user
-
-    return result;
-};
-
-export const doSignOut = () => {
-    return auth.signOut();
-};
-
-// export const doPasswordReset = (email) => {
-//     return sendPasswordResetEmail(auth, email);
-// };
-
-// export const doPasswordChange = (password) => {
-//     return doPasswordChange(auth.currentUser, password);
-// };
-
-// export const doSendEmailVerification = () => {
-//     return sendEmailVerification(auth.currentUser, {
-//         url: `${window.location.origin}/home`,
-//     });
-// };
