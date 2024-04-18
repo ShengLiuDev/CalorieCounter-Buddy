@@ -34,6 +34,7 @@ const Login = () => {
   //redirect if the user is logged in 
   useEffect(() => {
     if (userLoggedIn) {
+      console.log("user is logged in already, this is the state of userLoggedIn: ", userLoggedIn);
       navigate('/profile');
     }
   }, [userLoggedIn, navigate]);

@@ -54,20 +54,22 @@ const Signup = () => {
         setErrorMessage("Passwords do not match or do not meet the criteria");
         return;
     }
+    
     setIsSigningUp(true); // once signed up this is causing error
 
     try {
         await createUser(email, password); 
         // make sure to use correct function for signing up]
         console.log("user account was created and stored");
-        setConfirmationMessage("Account successfully created!");
         setEmail('');
         setPassword('');
         setConfirmPassword('');
+        setErrorMessage('');
     }
     catch (error) {
         setErrorMessage(error.message);
     }
+    setConfirmationMessage("Account successfully created!")
     setIsSigningUp(false);
   }
 
