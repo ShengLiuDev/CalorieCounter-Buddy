@@ -33,7 +33,10 @@ async function initializeUserData(userID) {
     try {
       // Set initial values for user data in the Realtime Database
       await set(ref(database, userID), {
-        caloriesConsumed: 0
+        caloriesConsumed: 0, 
+        savedRecipes: {
+          0: "test"
+        }
       });
       console.log('User data initialized successfully');
     } catch (error) {
