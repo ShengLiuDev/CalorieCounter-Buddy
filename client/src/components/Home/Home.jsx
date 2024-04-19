@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react'; 
+import React, { useState, useEffect, useRef } from 'react'; 
+import emailjs from '@emailjs/browser';
 import './Home.css';
+import ContactForm from './ContactForm';'./ContactForm.js';
 import mainHeader from '../../images/homepage-banner.jpg';
 import workoutVideos from '../../videos/index.js';
+import Navbar from '../Navbar/Navbar';
 
 import alvin from '../../images/alvin.jpg';
 import devika from '../../images/devika.jpg';
@@ -9,19 +12,38 @@ import johnny from '../../images/johnny.jpg';
 
 const Home = () => {
     const [videoIndex, setVideoIndex] = useState(0);
+    const homeRef = useRef(null);
+    const aboutUsRef = useRef(null);
+    const contactUsRef = useRef(null);
+  
+    const onScrollToSection = (sectionID) => {
+      let ref;
+      if (sectionID === 'about-us') {
+        ref = aboutUsRef;
+      } 
+      else if (sectionID === 'contact-us') {
+        ref = contactUsRef;
+      }
+      else if (sectionID === 'homepage') {
+        ref = homeRef;
+      }
+      ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
     
     useEffect(() => {
         const videoChangeInterval = setInterval(() => {
             setVideoIndex((current) => (current + 1) % workoutVideos.length); // Loop through videos
-        }, 10000);
+        }, 9500);
 
         return () => clearInterval(videoChangeInterval);
     }, []);
 
+
     return (
         <section>
+            <Navbar onScrollToSection={onScrollToSection} />
             <div className="home-page">
-                <div className="home-page-banner-icon">
+                <div className="home-page-banner-icon" id='homepage'>
                     <img src={mainHeader} alt="Homepage Banner" className="home-icon" />
                     {/* Place your welcome text outside of the img tag */}
                     <div className="homepage-text"> 
@@ -36,11 +58,13 @@ const Home = () => {
                                 share your own recipes with your friends all here. 
                             </div>   
                     </div>
-                    <video src={workoutVideos[videoIndex]} width="100%" height="auto" muted autoPlay loop className="workout-video"/>
-                    <hr></hr>
+                    <div className='video-container'>
+                        {/* <video src={workoutVideos[videoIndex]} width="100%" height="auto" preload="auto" muted autoPlay loop onended="this.player()" className="workout-video" type="video/webm"/> */}
+                        <video src={workoutVideos[videoIndex]} width="100%" height="auto" preload="auto" mute="true" autoPlay={true} loop={true} className="workout-video" type="video/mp4"/>
+                    </div>
                 </div>
-                <div className="about-us-container">
                 
+                <div ref={aboutUsRef} id="about-us" className="about-us-container" >
                     <div className='about-us-pictures'>
                         <img src={johnny} className='professional-headshots'></img>
                         <img src={alvin} className='professional-headshots'></img>
@@ -48,7 +72,6 @@ const Home = () => {
                     </div>
                     <div className="about-us-content">
                         <div className="about-us-header">
-                            
                             About Us
                         </div>
                         <p className="about-us-text">
@@ -65,7 +88,9 @@ const Home = () => {
                             students for UF students, that's what we're proud of. 
                         </p>
                     </div>
-                    
+                </div>
+                <div ref={contactUsRef} id="contact-us" className="contact-us-section">
+                    <ContactForm />
                 </div>
             </div>
         </section>

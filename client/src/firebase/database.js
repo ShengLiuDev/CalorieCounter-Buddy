@@ -2,6 +2,7 @@ import {database} from './firebase';
 import {ref, set, get, child} from 'firebase/database';
 
 
+
 export const writeUserCalorieData = async (userId, currCalorie) => {
     get(child(ref(database), userId)).then((snapshot) => {
         if (snapshot.exists()) {
@@ -26,6 +27,7 @@ export const writeUserCalorieData = async (userId, currCalorie) => {
         }
       })   
   }
+
 
 
 

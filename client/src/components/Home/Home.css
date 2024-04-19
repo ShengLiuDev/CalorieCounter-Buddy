@@ -27,30 +27,39 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 .home-icon {
 	width: 100%;
 	position: relative;
+	height: 100vh;
+	object-fit: cover;
+}
+
+.home-page {
+	height: 100vh;
+	width: 100%;
 }
 
 .homepage-text {
-	top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    /* transform: translate(-50%, -50%); Offset the position to truly center */
-    color: black; /* Set text color */
-    text-align: center; /* Align text */
-    width: 100%; /* Full width to align text properly */
-    font-size: 30px; /* Larger text */
+	/* top: 50%; 
+    left: 50%;  */
+    color: black;
+    text-align: center; 
+    width: 100%; 
+    font-size: 30px;
 	font-family: arista-light;
 	background-color: white;
 	padding-top: 80px;
-	
+}
+
+.video-container {
+    padding: 200px;
+    position: relative;
+    display: block;
+    margin-top: -100px;
+    width: 80%;
+	margin: auto;
 }
 
 .workout-video {
-	align-items: left;
-	justify-content: left;	
-	padding: 200px;
-	position: relative;
-	display: block;
-	margin-top: -100px;
-	width: 100%;
+    width: 100%;
+    height: auto;
 }
 
 .about-us-container {
@@ -59,6 +68,7 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 	align-items: center;
 	padding: 150px;
 	background-color: black;
+	height: 100vh;
 }
 
 .about-us-pictures {
@@ -73,13 +83,16 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 	width: 100%;
 	height: auto;
 	border: 2px solid black;
+	border-radius: 25px;
 }
 
 .about-us-content {
     flex-basis: 50%; /* Takes up half the container's width */
-    padding-right: 5%; /* Add some padding to ensure it doesn't touch the edge of the container */
+    padding: 5%; /* Add some padding to ensure it doesn't touch the edge of the container */
     box-sizing: border-box; /* Include padding in the width calculation */
 	color: white;
+	align-items: center;
+	justify-content: center;
 }
 
 .about-us-header {
@@ -91,10 +104,103 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 
 .about-us-text {
 	font-family: arista-light;
-	font-size: 20px;
+	font-size: 25px;
 	text-align: center;
 	color: white;
-	
+}
+
+.contact-us-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 100px;
+	height: auto;
+	height: calc(100vh - 100px);
+	scroll-margin-top: 100px;
+}
+
+.contact-us-header {
+	font-family: arista-bold;
+	font-size: 50px;
+	color: black;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.contact-us-subtext {
+	font-family: arista-light;
+	font-size: 25px;
+	margin-bottom: 40px;
+	text-align: center;
+}
+
+.our-email {
+	position: relative;
+	display: inline;
+	cursor: pointer;
+	text-decoration: none; 
+	color: black; 
+  }
+
+.our-email:after {
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 2px;
+	display: block;
+	margin-top: 5px;
+	right: 50%;
+	background: black;
+	transition: width 0.2s ease-out, right 0.2s ease-out;
+}
+
+.our-email:hover:after {
+	width: 100%;
+	right: 0;
+}
+
+.contact-us-information form {
+	font-family: arista-light;
+	font-size: 25px;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	max-width: 500px;
+	gap: 20px;
+	height: auto;
+}
+
+form label {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+input[type='text'] {
+	width: 100%; 
+	min-width: 400px;
+	max-width: 500px;
+	padding: 10px;
+	margin-top: 5px; 
+	border: 2px solid #80BDFF; 
+	border-radius: 5px; 
+	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+	font-family: "MrGeorge", sans-serif;
+}
+  
+input[type='text']:focus {
+border-color: #0056b3;
+outline: 0; 
+}
+
+textarea[name='message'] {
+	font-size: 20px;
+	font-family: sans-serif;
+	border-radius: 5px;
+	width: 100%;
+	height: auto;
+	min-width: 300px;
+	min-height: 150px;
 }
 
 

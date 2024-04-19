@@ -1,0 +1,14 @@
+@font-face {
+	font-family: 'arista-light';
+	src: url('/font/Arista-Pro-Light-trial.ttf');
+}
+  
+@font-face {
+font-family: 'arista-bold';
+src: url('/font/Arista-Pro-Bold-trial.ttf');
+}
+
+.profile-header-text {
+    font-size: 60px;
+    font-family: arista-light;
+}
