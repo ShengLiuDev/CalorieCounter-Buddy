@@ -9,6 +9,21 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 }
 
 .profile-header-text {
-    font-size: 60px;
+    font-size: 50px;
     font-family: arista-light;
+    text-align: center;
+    position: relative;
+    padding: 120px;
+    /* text-decoration: underline;
+    text-decoration-thickness: 3px; */
+}
+
+.vertical-line {
+    margin-top: 212px;
+    left: 20%;
+    margin-left: -3px;
+    top: 0;
+    height: 1000px;
+    position: absolute;
+    border-left: 1px solid black;
 }
