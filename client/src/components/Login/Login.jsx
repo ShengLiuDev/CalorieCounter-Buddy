@@ -11,6 +11,7 @@ import { withLine } from 'react-icons-kit/entypo/withLine';
 const Login = () => {
   const navigate = useNavigate();
   const { userLoggedIn } = useAuth();
+  console.log("this is the current useAuth() state: ", useAuth());
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordShown, setPasswordShown] = useState(false);
@@ -33,8 +34,8 @@ const Login = () => {
 
   //redirect if the user is logged in 
   useEffect(() => {
+    console.log("use state of the userLoggedIn variable is: ", userLoggedIn);
     if (userLoggedIn) {
-      console.log("user is logged in already, this is the state of userLoggedIn: ", userLoggedIn);
       navigate('/profile');
     }
   }, [userLoggedIn, navigate]);

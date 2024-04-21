@@ -55,7 +55,7 @@ const Signup = () => {
         return;
     }
     
-    setIsSigningUp(true); // once signed up this is causing error
+    //setIsSigningUp(true); // once signed up this is causing error
 
     try {
         await createUser(email, password); 

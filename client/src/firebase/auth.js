@@ -7,6 +7,7 @@ export const createUser = async (email, password) => {
     const userCredential = await firebaseCreateUserWithEmailAndPassword(auth, email, password);
     const userID = userCredential.user.uid;
     await initializeUserData(userID);
+    await firebaseSignOut(auth);
     return userCredential;
 };
 
