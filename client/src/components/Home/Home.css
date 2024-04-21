@@ -93,6 +93,7 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 	color: white;
 	align-items: center;
 	justify-content: center;
+	z-index: 5;
 }
 
 .about-us-header {
