@@ -2,11 +2,11 @@ import React, { useReducer, useState, useEffect } from 'react';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios'; 
 import { useAuth } from '../../contexts/authContext';
-import { writeUserData, getUserData } from '../../firebase/database';
+import { writeUserCalorieData, getUserCalorieData } from '../../firebase/database';
 import './CalorieCounter.css'
 
 function CalorieCounter() {
-    const { currentUser, userLoggedIn} = useAuth();
+    const { currentUser, userLoggedIn } = useAuth();
 
     const formReducer = (state, event) => {
         if(event.reset) {
@@ -27,10 +27,29 @@ function CalorieCounter() {
     if(userLoggedIn){
         contributor_id = currentUser.uid;
     }
-
-    const soFar = getUserData(contributor_id);
-    console.log(soFar);
     const navigate = useNavigate();
+    var [soFar, setsoFar] = useState(null);
+    //Place this code in part for profile page
+    
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                if (userLoggedIn) {
+                    const cals = await getUserCalorieData(contributor_id);
+                    setsoFar(cals);
+                } else {
+                    navigate('/login');
+                }
+            } catch (error) {
+                console.error('Error:', error.message);
+            }
+        }
+        fetchData();
+    }, [userLoggedIn, contributor_id]);
+
+    var [cals, setCals] = useState(null);
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -53,9 +72,13 @@ function CalorieCounter() {
         const response = await axios.get(`http://localhost:3001/api/ingredients/name/${updatedFormData.FoodItem}`);
         console.log(response.data); // Handle the response data
         const calories = response.data;
+        cals = setCals(calories);
 
         //post response data to firebase database, with contributor_id
-        await writeUserData(contributor_id, calories);
+        await writeUserCalorieData(contributor_id, calories);
+
+        const val = await getUserCalorieData(contributor_id);
+        setsoFar(val);
 
         setSubmitting(true);
 
@@ -67,6 +90,7 @@ function CalorieCounter() {
           }, 3000)
 
     }
+    console.log('Calories: ', cals);
 
     const handleChange = event => {
         setFormData({
@@ -94,8 +118,13 @@ function CalorieCounter() {
                 </fieldset>
             </div>
             <div>
-            {!submitting &&
-                <div>You just consumed {soFar} calories!</div>}
+            {submitting &&
+                <div>You just consumed {cals} calories!</div>}
+            </div>
+            <div>
+                {
+                    !submitting && <div> You have consumed {soFar} calories today! </div>
+                }
             </div>
         </div>
        
