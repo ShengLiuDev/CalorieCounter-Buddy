@@ -1,16 +1,23 @@
 import React, { useReducer, useState, useEffect } from 'react';
+import {useNavigate} from 'react-router-dom';
 import axios from 'axios'; 
+import { useAuth } from '../../contexts/authContext';
 import './UploadRecipe.css'
 
+//function UploadRecipe()
 
-function UploadRecipe() {
+
+
+const UploadRecipe = () => {
+
+    const { currentUser, userLoggedIn} = useAuth();
 
     const [inputFields, setInputFields] = useState([
         {name: '', quantity: '', measurement: ''}
     ]);
 
     const[inputFields2, setInputFields2] = useState([
-        {instructions: ''}
+        {steps: ''}
     ]);
 
     const [inputFieldsTags, setInputFieldsTags] = useState([
@@ -25,7 +32,7 @@ function UploadRecipe() {
               inputFields2,
               minutes: '', 
               description: '', 
-              inputFieldsTags
+              inputFieldsTags, 
             }
           }
         return {
@@ -34,20 +41,44 @@ function UploadRecipe() {
         }
     }
 
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useReducer(formReducer, {});
     const [submitting, setSubmitting] = useState(false);
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        const tagsArray = inputFieldsTags.map(tagObject => tagObject.tags);
+        const nonEmptyTagsArray = tagsArray.filter(tag => tag.trim() !== '');
+
+        const stepsArray = inputFields2.map(stepObject => stepObject.steps);
+        const nonEmptyStepsArray = stepsArray.filter(step => step.trim() !== '');
+
+       
+        
+
+        if (!userLoggedIn) {
+            // If user is not logged in, redirect to the login page
+            navigate('/login') // Change '/login' to the path of your login page
+            return; // Exit the function to prevent further execution
+        }
+        
+        var contributor_id= '1234';
+
+        if(userLoggedIn){
+            contributor_id = currentUser.uid;
+        }
+
         const updatedFormData = {
             ...formData,
             ingredients: inputFields,
-            instructions: inputFields2, 
-            tags: inputFieldsTags,
-            today: new Date()
+            steps: nonEmptyStepsArray, 
+            tags: nonEmptyTagsArray,
+            today: new Date(),
+            contributor_id
         };
         
-        console.log(updatedFormData);
-        const response = axios.post('http://localhost:3001/api/recipes', updatedFormData);
+        //console.log(updatedFormData);
+        const response = await axios.post('http://localhost:3001/api/recipes', updatedFormData);
         console.log(response.data);
 
         setSubmitting(true);
@@ -95,7 +126,7 @@ function UploadRecipe() {
 
      const addFields2 = (e) => {
         e.preventDefault();
-        let newfield = {instructions: ''}
+        let newfield = {steps: ''}
         setInputFields2([...inputFields2, newfield])
      }
 
@@ -144,7 +175,7 @@ function UploadRecipe() {
                             return(
                                 <div key = {index}>
                                     <p>Instruction</p>
-                                    <input name="instructions" onChange={event => handleFormChange2(index, event)} value={input.instructions || ''}/>
+                                    <input name="steps" onChange={event => handleFormChange2(index, event)} value={input.steps || ''}/>
                                 </div>
                             )
                         })

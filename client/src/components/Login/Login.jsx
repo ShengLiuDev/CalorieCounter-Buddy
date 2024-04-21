@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { doSignInWithEmailAndPassword, doSignInWithGoogle } from '../../firebase/auth';
+import { signIn, doSignInWithGoogle } from '../../firebase/auth';
 import { useAuth } from '../../contexts/authContext';
 import './Login.css';
 
@@ -11,6 +11,7 @@ import { withLine } from 'react-icons-kit/entypo/withLine';
 const Login = () => {
   const navigate = useNavigate();
   const { userLoggedIn } = useAuth();
+  console.log("this is the current useAuth() state: ", useAuth());
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordShown, setPasswordShown] = useState(false);
@@ -33,8 +34,9 @@ const Login = () => {
 
   //redirect if the user is logged in 
   useEffect(() => {
+    console.log("use state of the userLoggedIn variable is: ", userLoggedIn);
     if (userLoggedIn) {
-      navigate('/home');
+      navigate('/profile');
     }
   }, [userLoggedIn, navigate]);
 
@@ -43,7 +45,7 @@ const Login = () => {
     setIsSigningIn(true);
 
     try {
-      await doSignInWithEmailAndPassword(email, password);
+      await signIn(email, password);
     } 
     catch (error){
       setErrorMessage(error.message);
@@ -63,9 +65,11 @@ const Login = () => {
     }
     setIsSigningIn(false);
   }
+  // create userState method that stores checks if userisloggedin 
+  // (if so, reroute to profile page rather than login) 
 
   return (
-    <div className='container mt-5'>
+    // <div className='container mt-5'> causes white border at top
       <div className='row justify-content-center'>
         <div className='col-md-6'>
           <div className='card'>
@@ -88,7 +92,7 @@ const Login = () => {
                   <div className='mb-3'>
                     <label htmlFor='passwordInput' className='form-label'>Password</label>
                     <input 
-                      type={passwordShown ? 'text' : 'password'} 
+                      type={passwordShown ? 'passwordText' : 'password'} 
                       className='form-control' 
                       id='passwordInput' 
                       value={password} 
@@ -117,7 +121,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </div>
+    // </div>
   );
 };
 

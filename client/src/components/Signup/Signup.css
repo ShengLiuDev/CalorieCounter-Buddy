@@ -2,6 +2,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
 }
 
 .card-header {
@@ -28,4 +31,14 @@
 
 .signup-text {
     color: rgb(121, 34, 139);
+}
+
+.card {
+    position: relative;
+    width: 100%; /* Adjust the width as necessary */
+    margin-top: 200px;
+}
+
+.form-control {
+    width: 100%;
 }
