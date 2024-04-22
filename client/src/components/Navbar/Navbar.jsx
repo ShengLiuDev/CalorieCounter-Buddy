@@ -10,20 +10,17 @@ const Navbar = ({onScrollToSection}) => {
     const navigate = useNavigate();
 
     const handleNavBarClick = (sectionID) => (event) => {
-        if (sectionID === 'home') {   
-            // Check if we're already on the homepage
-            if (location.pathname === '/') {
-                // Prevent the default anchor behavior
-                event.preventDefault();
-                // Scroll to the top of the page
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
-                // If we're not on the homepage, navigate to the homepage
-                navigate('/');
-            }
-        } else {
-            // Handle scrolling for 'about-us' or 'contact-us'
+        // Check if we're already on the homepage
+        if (location.pathname === '/') {
+            // Prevent the default anchor behavior
+            event.preventDefault();
+            // Scroll to the top of the page
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             onScrollToSection(sectionID);
+        } 
+        else if (location.pathname != '/'){
+            // If we're not on the homepage, navigate to the homepage
+            navigate('/');
         }
     }
 
@@ -51,13 +48,15 @@ const Navbar = ({onScrollToSection}) => {
                 </div>
                 {/*Stuff on the Right Hand Side */}
                 {/* Search link */}
-                <Link className="search" to="/search">
-                    <img src={SearchIcon} className="search-icon" alt="Search Icon" width="20" height="20" />
-                </Link>
-                {/* Login link */}
-                <Link className="login" to="/login">
-                    <img src={LoginIcon} className="login-icon" alt="Login Icon" width="30" height="30" />
-                </Link>
+                <div className="right-side-icons">
+                    <Link className="search" to="/search">
+                        <img src={SearchIcon} className="search-icon" alt="Search Icon" width="20" height="20" />
+                    </Link>
+                    {/* Login link */}
+                    <Link className="login" to="/login">
+                        <img src={LoginIcon} className="login-icon" alt="Login Icon" width="30" height="30" />
+                    </Link>
+                </div>
                 
             </div>
         </nav>

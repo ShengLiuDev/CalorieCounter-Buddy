@@ -69,6 +69,7 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 	padding: 150px;
 	background-color: black;
 	height: 100vh;
+	scroll-margin-top: 100px;
 }
 
 .about-us-pictures {
@@ -125,6 +126,7 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 	font-size: 50px;
 	color: black;
 	margin-bottom: 20px;
+	margin-top: -60px;
 	text-align: center;
 }
 
@@ -141,7 +143,7 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 	cursor: pointer;
 	text-decoration: none; 
 	color: black; 
-  }
+}
 
 .our-email:after {
 	content: '';
@@ -169,6 +171,7 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 	max-width: 500px;
 	gap: 20px;
 	height: auto;
+	margin-bottom: 60px;
 }
 
 form label {

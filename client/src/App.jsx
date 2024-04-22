@@ -14,7 +14,6 @@ import CalorieCounter from './components/CalorieCounter/CalorieCounter';
 import Search from "./components/Search/Search";
 import Recipe from "./components/Recipe/Recipe";
 
-
 const App = () => {
 
   return(

@@ -69,3 +69,13 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+.right-side-icons {
+  position: relative;
+  display: flex;  
+  align-items: center;
+}
+
+.search {
+  padding-right: 20px;
+}

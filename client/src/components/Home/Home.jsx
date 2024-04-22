@@ -9,6 +9,7 @@ import Navbar from '../Navbar/Navbar';
 import alvin from '../../images/alvin.jpg';
 import devika from '../../images/devika.jpg';
 import johnny from '../../images/johnny.jpg';
+import lorainne from '../../images/lorainne.jpg';
 
 const Home = () => {
     const [videoIndex, setVideoIndex] = useState(0);
@@ -69,6 +70,7 @@ const Home = () => {
                         <img src={johnny} className='professional-headshots'></img>
                         <img src={alvin} className='professional-headshots'></img>
                         <img src={devika} className='professional-headshots'></img>
+                        <img src={lorainne} className='professional-headshots'></img>
                     </div>
                     <div className="about-us-content">
                         <div className="about-us-header">
