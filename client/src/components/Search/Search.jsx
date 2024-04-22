@@ -25,12 +25,13 @@ const Search = () => {
         const updatedFormData = {
             ...formData
         };
-
-        const searchResponse = await axios.get(`http://localhost:3001/api/recipes/search`, {
+        console.log(updatedFormData.searchText);
+        const searchResponse = await axios.get('http://localhost:3001/api/recipes/search', {
             params: {
                 recipename: updatedFormData.searchText
             }
         })
+        console.log(searchResponse.data);
         setSearchResults(searchResponse.data.recipes.map(res => res));
     }
 

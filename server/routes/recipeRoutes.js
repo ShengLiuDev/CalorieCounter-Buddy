@@ -57,9 +57,13 @@ router.get('/id/:id', (request, response) => {
 
 router.get('/:name', (request, response) => {
     console.log(request.params.name);
-    Recipe.find({title: request.params.name})
-    .then(recipes => {
-        response.json(recipes);
+    Recipe.findOne({title: request.params.name})
+    .then(recipe => {
+        if (recipe) {
+            response.json(recipe); // Return the recipe if found
+        } else {
+            response.status(404).json({ error: 'Recipe not found' }); // Return 404 if the recipe is not found
+        }
     })
     .catch(error => {
         console.error('Recipe not found', error.message);
@@ -71,6 +75,7 @@ router.get('/:name', (request, response) => {
 router.get('/search', async (req, res) => {
     console.log("Searching up recipe");
     const query = req.query.recipename; // Get the search query from the query parameters
+    console.log(query);
     const page = parseInt(req.query.page) || 1; // Get the page number, default to 1 if not provided
     const pageSize = parseInt(req.query.pageSize) || 10; // Get the page size, default to 10 if not provided
 
