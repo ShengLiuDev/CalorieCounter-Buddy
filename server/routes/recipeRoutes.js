@@ -55,22 +55,6 @@ router.get('/id/:id', (request, response) => {
 	});
 })
 
-router.get('/:name', (request, response) => {
-    console.log(request.params.name);
-    Recipe.findOne({title: request.params.name})
-    .then(recipe => {
-        if (recipe) {
-            response.json(recipe); // Return the recipe if found
-        } else {
-            response.status(404).json({ error: 'Recipe not found' }); // Return 404 if the recipe is not found
-        }
-    })
-    .catch(error => {
-        console.error('Recipe not found', error.message);
-        response.status(500).json({error: 'Internal server error'});
-    });
-})
-
 //Search recipe based on most relveant
 router.get('/search', async (req, res) => {
     console.log("Searching up recipe");
@@ -100,6 +84,23 @@ router.get('/search', async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 })
+
+router.get('/:name', (request, response) => {
+    console.log(request.params.name);
+    Recipe.findOne({title: request.params.name})
+    .then(recipe => {
+        if (recipe) {
+            response.json(recipe); // Return the recipe if found
+        } else {
+            response.status(404).json({ error: 'Recipe not found' }); // Return 404 if the recipe is not found
+        }
+    })
+    .catch(error => {
+        console.error('Recipe not found', error.message);
+        response.status(500).json({error: 'Internal server error'});
+    });
+})
+
 
 // CREATE a new recipe
 router.post('/', (request, response) => {

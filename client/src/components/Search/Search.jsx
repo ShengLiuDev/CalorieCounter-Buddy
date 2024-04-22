@@ -18,21 +18,31 @@ const Search = () => {
     }
     const [formData, setFormData] = useReducer(formReducer, {});
     const [searchResults, setSearchResults] = useState([]);
+    const [pageNumber, setPageNumber] = useState(1);
+    useEffect(() => {
+        makeSearchQuery();
+    }, [pageNumber])
+
+    const makeSearchQuery = async (e) => {
+        const updatedFormData = {
+            ...formData
+        }
+        if (updatedFormData.searchText == undefined) {
+            return;
+        }
+        const searchResponse = await axios.get('http://localhost:3001/api/recipes/search', {
+            params: {
+                recipename: updatedFormData.searchText,
+                page: pageNumber
+            }
+        })
+        setSearchResults(searchResponse.data.recipes.map(res => res));
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        const updatedFormData = {
-            ...formData
-        };
-        console.log(updatedFormData.searchText);
-        const searchResponse = await axios.get('http://localhost:3001/api/recipes/search', {
-            params: {
-                recipename: updatedFormData.searchText
-            }
-        })
-        console.log(searchResponse.data);
-        setSearchResults(searchResponse.data.recipes.map(res => res));
+        setPageNumber(1);
+        makeSearchQuery();
     }
 
     const handleChange = event => {
@@ -42,21 +52,30 @@ const Search = () => {
         });
     }
 
+    const turnPage = (pagesTurned) => {
+        if (pageNumber > 1 || pagesTurned > 0) {
+            setPageNumber(pageNumber + pagesTurned);
+        }
+    }
+
     return(
         <div className='wrapper'>
             <form onSubmit={handleSubmit}>
             <p> Search recipes </p>
-            <input name="searchText" onChange={handleChange}/>
+            <input name="searchText" onChange={handleChange} value={formData.searchText || ''}/>
             <button type="submit">Search</button>
             </form>
             <div className='searchResults'>
                 {
-                    searchResults.map(result => <div>
+                    searchResults.map(result => <div key={result.title}>
                         <a href={`http://localhost:5173/recipe/${result.title}`}>{result.title}</a>
                         <p>{result.description}</p>
                         </div>)
                 }
             </div>
+            <button type="button" onClick={() => turnPage(-1)}>{'<'} Prev</button>
+            {pageNumber}
+            <button type="button" onClick={() => turnPage(1)}>Next {'>'}</button>
         </div>
     )
 };
