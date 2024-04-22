@@ -55,6 +55,18 @@ router.get('/id/:id', (request, response) => {
 	});
 })
 
+router.get('/:name', (request, response) => {
+    console.log(request.params.name);
+    Recipe.find({title: request.params.name})
+    .then(recipes => {
+        response.json(recipes);
+    })
+    .catch(error => {
+        console.error('Recipe not found', error.message);
+        response.status(500).json({error: 'Internal server error'});
+    });
+})
+
 //Search recipe based on most relveant
 router.get('/search', async (req, res) => {
     console.log("Searching up recipe");

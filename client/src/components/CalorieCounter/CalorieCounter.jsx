@@ -103,8 +103,8 @@ function CalorieCounter() {
 
     return(
         <div className='wrapper'>
-            <div className='text-color'>
-                <h1>Upload your caloric intake</h1>
+            <div className='background-photo-page'>
+                <h1 className='text-bold'>Upload your caloric intake</h1>
                 <form onSubmit={handleSubmit}>
                     <fieldset>
                         <label>
@@ -114,17 +114,10 @@ function CalorieCounter() {
                     </fieldset>
                 </form>
                 <fieldset>
-                    <button onClick={handleSubmit}>Submit</button>
+                    <button onClick={handleSubmit} className='submit-button'>Submit</button>
                 </fieldset>
-            </div>
-            <div>
-            {submitting &&
-                <div>You just consumed {cals} calories!</div>}
-            </div>
-            <div>
-                {
-                    !submitting && <div> You have consumed {soFar} calories today! </div>
-                }
+                {submitting &&
+                <div >You just consumed {cals} calories!</div>}
             </div>
         </div>
        
