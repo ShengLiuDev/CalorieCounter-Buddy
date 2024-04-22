@@ -70,4 +70,16 @@ export const writeUserCalorieData = async (userId, currCalorie) => {
   }
 
 
+  export const getUserSavedRecipe = async(userId) => {
+    get(child(ref(database), userId)).then((snapshot) => {
+      if (snapshot.exists()) {
+          console.log(snapshot.val().savedRecipes);
+          return snapshot.val().savedRecipes;
+      }
+      else{
+          return 0;
+      }
+  })
+  }
+
 

@@ -138,11 +138,12 @@ const UploadRecipe = () => {
 
     return( 
         <div className='wrapper'>
+        <div className='background-photo-page'>
             <div className='text-color'>
             <h1>Submit Your Recipe Idea Here!</h1>
             {submitting &&
                 <div>Submtting Form...</div>}
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} >
             <fieldset>
                 <label>
                     <p>Name of Recipe</p>
@@ -167,7 +168,7 @@ const UploadRecipe = () => {
                     }    
                 </div>
             </fieldset>
-            <button onClick={addFields}>Add Other Ingredient..</button>
+            <button onClick={addFields} className='adding-buttons'>Add Other Ingredient..</button>
             <fieldset>
                 <div>
                     {
@@ -182,7 +183,7 @@ const UploadRecipe = () => {
                     }    
                 </div>
             </fieldset>
-            <button onClick={addFields2}>Add Next Instruction</button>
+            <button onClick={addFields2} className='adding-buttons'>Add Next Instruction</button>
             <fieldset>
                 <label>
                     <p>Cooking Time (minutes)</p>
@@ -209,12 +210,13 @@ const UploadRecipe = () => {
                     }    
                 </div>
             </fieldset>
-            <button onClick={addFieldsTags}>Add Another Tag</button>
+            <button onClick={addFieldsTags} className='adding-buttons'>Add Another Tag</button>
             <fieldset>
-                <button onClick={handleSubmit}>Submit</button>
+                <button onClick={handleSubmit} className='submit-button'>Submit</button>
             </fieldset>
             </form>
             </div>
+        </div>
         </div>
     );
 }
