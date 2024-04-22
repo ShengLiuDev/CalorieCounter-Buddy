@@ -24,7 +24,7 @@ const Recipe = () => {
             try {
                 const response = await axios.get(`http://localhost:3001/api/recipes/${name}`);
                 console.log(response.data);
-                setRecipe(response.data[0]); // Set the fetched recipe data in the state
+                setRecipe(response.data); // Set the fetched recipe data in the state
             } catch (error) {
                 console.error('Error fetching recipe:', error);
             }
@@ -89,9 +89,25 @@ const Recipe = () => {
                      <h2>{recipe.title}</h2>
                     <p>{recipe.description}</p>
                     <p>Nutritional Information: </p>
+                    <ul>
+                        <li>Calories: {recipe.nutritionalInformation.calories}</li>
+                        <li>Fat: {recipe.nutritionalInformation.fat}</li>
+                        <li>Carbohydrates: {recipe.nutritionalInformation.carbohydrates}</li>
+                        <li>Protein: {recipe.nutritionalInformation.protein}</li>
+                    </ul>
                     <p>Time to cook in minutes: {recipe.minutes}</p> 
                     <p>Ingredients: </p>
-                    <li>Cooking Instructions: {recipe.steps}</li>
+                    <ul>
+                        {recipe.ingredients.map(ingred =>
+                            <li>{ingred.name}</li>
+                        )}
+                    </ul>
+                    <p>Cooking Instructions: </p>
+                    <ol>
+                        {recipe.steps.map(step =>
+                            <li>{step}</li>
+                        )}
+                    </ol>
                     <div>
                         <button onClick={handleSave}>Save Recipe</button>
                     </div>
