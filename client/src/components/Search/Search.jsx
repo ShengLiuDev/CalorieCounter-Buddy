@@ -46,11 +46,14 @@ const Search = () => {
             <form onSubmit={handleSubmit}>
             <p> Search recipes </p>
             <input name="searchText" onChange={handleChange}/>
-            <button>Search</button>
+            <button type="submit">Search</button>
             </form>
             <div className='searchResults'>
                 {
-                    searchResults.map(result => <div><a href={`http://localhost:5173/recipe/${result.title}`}>{result.title}</a></div>)
+                    searchResults.map(result => <div>
+                        <a href={`http://localhost:5173/recipe/${result.title}`}>{result.title}</a>
+                        <p>{result.description}</p>
+                        </div>)
                 }
             </div>
         </div>
