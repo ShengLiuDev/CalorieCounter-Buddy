@@ -14,8 +14,13 @@
     align-items: center;
     height: 100vh; /* Adjust the height as needed */
     text-align: center; /* Centers the text for children */
+    font-size:20px
 }
   
+.recipe-header {
+    margin-top: 400px;
+}
+
 form {
     font-size: 20px;
     /* font-family: arista-light; */

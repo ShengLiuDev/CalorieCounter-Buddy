@@ -143,7 +143,7 @@ const UploadRecipe = () => {
                 <fieldset>
                     <label>
                         <p className="input-header">Name of Recipe</p>
-                        <input name="title" onChange={handleChange} value={formData.title || ''} type="input-box"/>
+                        <input name="title" onChange={handleChange} value={formData.title || ''} type="text"/>
                     </label>
                 </fieldset>
                 <fieldset>
@@ -153,11 +153,11 @@ const UploadRecipe = () => {
                                 return(
                                     <div key = {index}>
                                         <p className="input-header">Ingredient Name</p>
-                                        <input name="name" onChange={event => handleFormChange(index, event)} value={input.name || ''} type="input-box"/>
+                                        <input name="name" onChange={event => handleFormChange(index, event)} value={input.name || ''} type="text"/>
                                         <p className="input-header">Quantity</p>
-                                        <input name="quantity" onChange={event => handleFormChange(index, event)} value={input.quantity || ''} type="input-box"/>
+                                        <input name="quantity" onChange={event => handleFormChange(index, event)} value={input.quantity || ''} type="text"/>
                                         <p className="input-header">Unit of Measurement</p>
-                                        <input name="measurement" onChange={event => handleFormChange(index, event)} value={input.measurement || ''} type="input-box"/>
+                                        <input name="measurement" onChange={event => handleFormChange(index, event)} value={input.measurement || ''} type="text"/>
                                     </div>
                                 )
                             })
@@ -173,8 +173,8 @@ const UploadRecipe = () => {
                             inputFields2.map((input, index) => {
                                 return(
                                     <div key = {index}>
-                                        <p className="input-header">Instructions</p>
-                                        <input name="steps" onChange={event => handleFormChange2(index, event)} value={input.steps || ''}/>
+                                        <p className="input-header" >Instructions</p>
+                                        <input name="steps" type="text" onChange={event => handleFormChange2(index, event)} value={input.steps || ''}/>
                                     </div>
                                 )
                             })
@@ -187,13 +187,13 @@ const UploadRecipe = () => {
                 <fieldset>
                     <label>
                         <p className="input-header">Cooking Time (minutes)</p>
-                        <input type ="number" name="minutes" onChange={handleChange} value={formData.minutes || ''}/>
+                        <input name="minutes" type="text" onChange={handleChange} value={formData.minutes || ''}/>
                     </label>
                 </fieldset>
                 <fieldset>
                     <label>
                         <p className="input-header">Description of Recipe</p>
-                        <input name="description" onChange={handleChange} value={formData.description || ''}></input>
+                        <input type="text" onChange={handleChange} value={formData.description || ''}></input>
                     </label>
                 </fieldset>
                 <fieldset>
@@ -203,7 +203,7 @@ const UploadRecipe = () => {
                                 return(
                                     <div key = {index}>
                                         <p className="input-header">Add Relevant Tags</p>
-                                        <input name="tags" onChange={event => handleFormChangeTags(index, event)} value={input.tags || ''}/>
+                                        <input type="text" onChange={event => handleFormChangeTags(index, event)} value={input.tags || ''}/>
                                     </div>
                                 )
                             })
