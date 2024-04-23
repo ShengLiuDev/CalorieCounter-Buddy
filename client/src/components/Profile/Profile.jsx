@@ -43,7 +43,7 @@ const Profile = () => {
                         {userEmail && <p>Email: {userEmail}</p>}
                     </div>
                     <div className="logout-btn">
-                        <button onClick={handleLogout}>
+                        <button onClick={handleLogout} type="button">
                             Logout
                         </button>
                     </div>
