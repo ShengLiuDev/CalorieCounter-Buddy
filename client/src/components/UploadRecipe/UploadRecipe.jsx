@@ -141,8 +141,10 @@ const UploadRecipe = () => {
                     <div>Submtting Form...</div>}
                 <form onSubmit={handleSubmit} >
                 <fieldset>
-                    <label>
-                        <p className="input-header-temp">Name of Recipe</p>
+                    <label className="input-header">
+                        <p>
+                            Name of Recipe
+                        </p>
                         <input name="title" onChange={handleChange} value={formData.title || ''} id="text"/>
                     </label>
                 </fieldset>
@@ -189,7 +191,7 @@ const UploadRecipe = () => {
                         </p>
                 </button>
                 <fieldset>
-                    <label>
+                    <label className="input-header">
                         <p className="input-header">
                             Cooking Time (minutes)
                         </p>
@@ -197,8 +199,8 @@ const UploadRecipe = () => {
                     </label>
                 </fieldset>
                 <fieldset>
-                    <label>
-                        <p className="input-header">
+                    <label className="input-header">
+                        <p>
                             Description of Recipe
                         </p>
                         <input name="description" onChange={handleChange} value={formData.description || ''} id="text"></input>

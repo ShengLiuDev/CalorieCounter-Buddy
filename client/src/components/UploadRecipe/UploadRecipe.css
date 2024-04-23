@@ -44,12 +44,6 @@ html, body {
     font-family: arista-light;
 }
 
-.name-of-recipe-temp {
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-}
-
 form {
     font-size: 20px;
     /* font-family: arista-light; */
@@ -72,15 +66,6 @@ form {
     text-align: center;
     font-family: arista-light;
     font-size: 30px;   
-}
-
-.input-header-temp {
-    font-family: arista-light;
-    font-size: 30px;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    margin-left: 125px;
 }
 
 .adding-buttons, .upload-submit-btn {
