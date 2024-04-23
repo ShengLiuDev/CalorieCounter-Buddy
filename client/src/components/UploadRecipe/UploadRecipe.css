@@ -75,21 +75,11 @@ form {
     
 }
 
-form input[id="text"],
-form select {
-    font-family: sans-serif; 
-    width: 100%; 
-    padding: 10px; 
-    margin-bottom: 20px;
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
-}
-
 .adding-buttons, .upload-submit-btn {
     font-family: sans-serif; 
     margin-top: 10px; 
     padding: 10px 20px; 
-    border: 1px solid #ccc;
+    border: 2px solid #80BDFF; 
     background-color: #f8f8f8; 
     cursor: pointer; 
     border-radius: 4px; 
@@ -103,3 +93,14 @@ form select {
     background-color: lightblue;
 }
 
+#text {
+    width: 100%; 
+    min-width: 400px;
+    max-width: 500px;
+    padding: 10px;
+    margin-top: 5px; 
+    border: 2px solid #80BDFF; 
+    border-radius: 5px; 
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    font-family: "MrGeorge", sans-serif;
+}
