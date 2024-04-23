@@ -18,7 +18,17 @@
 }
   
 .recipe-header {
-    margin-top: 400px;
+    margin-top: 850px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-family: arista-light;
+}
+
+.name-of-recipe-temp {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
 }
 
 form {
@@ -42,6 +52,7 @@ form {
     align-items: center;
     text-align: center;
     font-family: arista-light;
+    font-size: 30px;
     
 }
 
@@ -56,7 +67,7 @@ form select {
     border-radius: 4px; 
 }
 
-.adding-buttons, .submit-button {
+.adding-buttons, .upload-recipes-submit-btn {
     font-family: sans-serif; 
     margin-top: 10px; 
     padding: 10px 20px; 
@@ -66,7 +77,11 @@ form select {
     border-radius: 4px; 
 }
 
-.adding-buttons:hover, .submit-button:hover {
+.adding-buttons:hover, .upload-recipes-submit-btn:hover {
     background-color: #e7e7e7; 
 }
   
+.submit-button {
+    color: lightgreen !important;
+    background-color: lightblue;
+}

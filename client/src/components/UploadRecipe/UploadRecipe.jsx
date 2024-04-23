@@ -141,7 +141,7 @@ const UploadRecipe = () => {
                     <div>Submtting Form...</div>}
                 <form onSubmit={handleSubmit} >
                 <fieldset>
-                    <label>
+                    <label className="name-of-recipe-temp">
                         <p className="input-header">Name of Recipe</p>
                         <input name="title" onChange={handleChange} value={formData.title || ''} type="text"/>
                     </label>
@@ -210,9 +210,17 @@ const UploadRecipe = () => {
                         }    
                     </div>
                 </fieldset>
-                <button onClick={addFieldsTags} className='adding-buttons'>Add Another Tag</button>
+                <button onClick={addFieldsTags} className='adding-buttons'>
+                    <p className="input-header">
+                        Add Another Tag
+                    </p>
+                </button>
                 <fieldset>
-                    <button onClick={handleSubmit} className='submit-button'>Submit</button>
+                    <button onClick={handleSubmit} className='upload-recipes-submit-btn'>
+                        <p className="input-header">
+                            Submit
+                        </p>
+                    </button>
                 </fieldset>
                 </form>
             </div>
