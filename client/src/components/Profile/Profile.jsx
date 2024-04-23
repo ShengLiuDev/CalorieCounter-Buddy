@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { signOut } from '../../firebase/auth';
 import { auth } from '../../firebase/firebase';
 import './Profile.css';
+import profileBackground from '../../images/profile-background.jpg';
 
 const Profile = () => {
     const navigate = useNavigate();
@@ -24,10 +25,13 @@ const Profile = () => {
 
 
     return (
-        <section>
+        <section className="whole-profile-container">
             <div className="profile-container">
                 <div className="profile-header-text">
-                    Welcome to Your Profile
+                    Welcome to Your Profile!
+                    <div className="profile-header-subtext">
+                        We're glad you're here to meet your fitness goals
+                    </div>
                     <hr className="profile-underline"/>
                 </div>
                 <div className="vertical-line">
@@ -45,18 +49,18 @@ const Profile = () => {
                     </div>
                 </div>
             </div>
+            {/* <img src={profileBackground} className="profile-background"/> */}
             <div className="profile-options-container">
-                <a className="calorie-counter" href="/calorie-counter">
-                    Calorie Counter
-                    <br></br>
-                    <br></br>
-                </a>
-                <a className="upload-recipe" href="upload-recipe">
+                <div className="options-header">
+                Track Your Goals
+                </div>
+                <a href="upload-recipe" className="profile-link upload-recipe">
                     Upload Your Recipes
-                    <br></br>
-                    <br></br>
                 </a>
-                <a className="user-saved-recipes" href="saved-recipes">
+                <a href="calorie-counter" className="profile-link calorie-counter">
+                    Calorie Counter
+                </a>
+                <a href="user-saved-recipes" className="profile-link user-saved-recipes">
                     Saved Recipes
                 </a>
             </div>
