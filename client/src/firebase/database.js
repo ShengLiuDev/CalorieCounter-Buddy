@@ -31,17 +31,32 @@ export const writeUserCalorieData = async (userId, currCalorie) => {
 
 
 
+  // export const getUserCalorieData = async (userId) => {
+  //   get(child(ref(database), userId)).then((snapshot) => {
+  //       if (snapshot.exists()) {
+  //           console.log(snapshot.val().caloriesConsumed);
+  //           return snapshot.val().caloriesConsumed;
+  //       }
+  //       else{
+  //           return 0;
+  //       }
+  //   })
+  // }
+
   export const getUserCalorieData = async (userId) => {
-    get(child(ref(database), userId)).then((snapshot) => {
+    try {
+        const snapshot = await get(child(ref(database), userId));
         if (snapshot.exists()) {
             console.log(snapshot.val().caloriesConsumed);
             return snapshot.val().caloriesConsumed;
+        } else {
+            return 0; // Return an empty array if no recipes are found
         }
-        else{
-            return 0;
-        }
-    })
-  }
+    } catch (error) {
+        console.error('Error fetching calories:', error.message);
+        throw error; // Rethrow the error to handle it in the calling code
+    }
+};
 
 
   export const writeUserSavedRecipe = async(userId, recipeName) => {
@@ -70,16 +85,30 @@ export const writeUserCalorieData = async (userId, currCalorie) => {
   }
 
 
-  export const getUserSavedRecipe = async(userId) => {
-    get(child(ref(database), userId)).then((snapshot) => {
-      if (snapshot.exists()) {
-          console.log(snapshot.val().savedRecipes);
-          return snapshot.val().savedRecipes;
-      }
-      else{
-          return 0;
-      }
-  })
-  }
+  // export const getUserSavedRecipe = async(userId) => {
+  //   get(child(ref(database), userId)).then((snapshot) => {
+  //     if (snapshot.exists()) {
+  //         console.log(snapshot.val().savedRecipes);
+  //         return snapshot.val().savedRecipes;
+  //     }
+  //     else{
+  //         return 0;
+  //     }
+  // })}
+
+  export const getUserSavedRecipe = async (userId) => {
+    try {
+        const snapshot = await get(child(ref(database), userId));
+        if (snapshot.exists()) {
+            console.log(snapshot.val().savedRecipes);
+            return snapshot.val().savedRecipes;
+        } else {
+            return []; // Return an empty array if no recipes are found
+        }
+    } catch (error) {
+        console.error('Error fetching saved recipes:', error.message);
+        throw error; // Rethrow the error to handle it in the calling code
+    }
+};
 
 

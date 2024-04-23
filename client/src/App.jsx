@@ -13,6 +13,7 @@ import Popular from './components/Popular/Popular';
 import CalorieCounter from './components/CalorieCounter/CalorieCounter';
 import Search from "./components/Search/Search";
 import Recipe from "./components/Recipe/Recipe";
+import SavedRecipes from './components/SavedRecipes/SavedRecipes';
 
 const App = () => {
 
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/calorie-counter" element={<CalorieCounter/>}></Route>
         <Route path="/search" element={<Search/>}></Route>
         <Route path="/recipe/:name" element={<Recipe/>}></Route>
+        <Route path="/saved-recipes" element={<SavedRecipes/>}></Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </AuthProvider>

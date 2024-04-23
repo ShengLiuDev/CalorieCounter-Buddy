@@ -6,6 +6,31 @@
     margin: 20px 0;
 }
 
+@font-face {
+    font-family: arista-bold;
+    src: url('/font/Arista-Pro-Bold-trial.ttf');
+}
+
 .text-color {
     color: black;
+    font-family: arista-bold;
+}
+
+.turn-buttons {
+    background-color: lightslategray;
+    border: none;
+    color: white;
+    padding: 3px 3px;
+    text-align: center;
+    font-size: 10px;
+    border-radius: 8px;
+}
+
+.search-button {
+    background-color: darkgreen;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    text-align: center;
+    font-size: 12px;
 }

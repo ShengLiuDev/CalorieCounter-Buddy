@@ -61,9 +61,9 @@ const Search = () => {
     return(
         <div className='wrapper'>
             <form onSubmit={handleSubmit}>
-            <p> Search recipes </p>
+            <p className='text-color'> Search recipes </p>
             <input name="searchText" onChange={handleChange} value={formData.searchText || ''}/>
-            <button type="submit">Search</button>
+            <button type="submit" className='search-button'>Search</button>
             </form>
             <div className='searchResults'>
                 {
@@ -73,9 +73,9 @@ const Search = () => {
                         </div>)
                 }
             </div>
-            <button type="button" onClick={() => turnPage(-1)}>{'<'} Prev</button>
+            <button type="button" onClick={() => turnPage(-1)} className='turn-buttons'>{'<'} Prev</button>
             {pageNumber}
-            <button type="button" onClick={() => turnPage(1)}>Next {'>'}</button>
+            <button type="button" onClick={() => turnPage(1)} className='turn-buttons'>Next {'>'}</button>
         </div>
     )
 };

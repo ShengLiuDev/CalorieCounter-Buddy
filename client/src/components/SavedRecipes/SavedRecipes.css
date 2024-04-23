@@ -1,0 +1,27 @@
+.wrapper {
+    padding: 120px 20px;
+}
+
+.wrapper fieldset {
+    margin: 20px 0;
+}
+
+@font-face {
+    font-family: arista-bold;
+    src: url('/font/Arista-Pro-Bold-trial.ttf');
+}
+
+.text-color {
+    color: black;
+    font-family: arista-bold;
+    font-size: 30px;
+}
+
+.background-photo-page{
+    background-image: url('../../transparent-food.png');
+    background-size: cover;
+    color: black;
+    background-position: center; /* Centers the background image within the container */
+    background-repeat: no-repeat; /* Prevents the background image from repeating */ 
+    min-height: 100vh;
+}

@@ -3,6 +3,7 @@ import {useNavigate, useParams} from 'react-router-dom';
 import { useAuth } from '../../contexts/authContext';
 import { writeUserSavedRecipe, writeUserCalorieData } from '../../firebase/database';
 import axios from 'axios'; 
+import './Recipe.css';
 
 
 const Recipe = () => {
@@ -86,9 +87,9 @@ const Recipe = () => {
             {/* Render the recipe data */}
             {recipe && (
                 <div>
-                     <h2>{recipe.title}</h2>
+                    <h2 className='text-headings'>{recipe.title}</h2>
                     <p>{recipe.description}</p>
-                    <p>Nutritional Information: </p>
+                    <p className='text-headings'>Nutritional Information: </p>
                     <ul>
                         <li>Calories: {recipe.nutritionalInformation.calories}</li>
                         <li>Fat: {recipe.nutritionalInformation.fat}</li>
@@ -96,29 +97,29 @@ const Recipe = () => {
                         <li>Protein: {recipe.nutritionalInformation.protein}</li>
                     </ul>
                     <p>Time to cook in minutes: {recipe.minutes}</p> 
-                    <p>Ingredients: </p>
+                    <p className='text-headings'>Ingredients: </p>
                     <ul>
                         {recipe.ingredients.map(ingred =>
                             <li>{ingred.name}</li>
                         )}
                     </ul>
-                    <p>Cooking Instructions: </p>
+                    <p className='text-headings'>Cooking Instructions: </p>
                     <ol>
                         {recipe.steps.map(step =>
                             <li>{step}</li>
                         )}
                     </ol>
                     <div>
-                        <button onClick={handleSave}>Save Recipe</button>
+                        <button onClick={handleSave} className='save-buttons'>Save Recipe</button>
                     </div>
                     <div>
-                        <button onClick={handleConsume}>Add to my Calorie Count!</button>
+                        <button onClick={handleConsume} className='add-button'>Add to my Calorie Count!</button>
                     </div>
                     <div>
-                        {saving && <p>Saved!</p>}
+                        {saving && <p className='update-text'>Saved!</p>}
                     </div>
                     <div>
-                        {adding && <p>Added to Calorie Count!</p>}
+                        {adding && <p className='update-text'>Added to Calorie Count!</p>}
                     </div>
                 </div>
                 

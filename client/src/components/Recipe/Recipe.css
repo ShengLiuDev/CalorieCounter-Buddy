@@ -6,6 +6,43 @@
     margin: 20px 0;
 }
 
+@font-face {
+    font-family: arista-bold;
+    src: url('/font/Arista-Pro-Bold-trial.ttf');
+}
+
+
 .text-color {
     color: black;
+}
+
+.text-headings {
+    color: black;
+    font-family: arista-bold;
+}
+
+.save-buttons {
+    background-color: lightgreen;
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.add-button {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.update-text {
+    color: purple;
+    font-family: arista-bold;
+    font-size: 30px;
 }
