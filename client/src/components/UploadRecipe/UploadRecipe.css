@@ -32,7 +32,7 @@ html, body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.9; 
+    opacity: 0.3; 
     z-index: -1; 
 }
   
@@ -71,8 +71,16 @@ form {
     align-items: center;
     text-align: center;
     font-family: arista-light;
+    font-size: 30px;   
+}
+
+.input-header-temp {
+    font-family: arista-light;
     font-size: 30px;
-    
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-left: 125px;
 }
 
 .adding-buttons, .upload-submit-btn {

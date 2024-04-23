@@ -142,7 +142,7 @@ const UploadRecipe = () => {
                 <form onSubmit={handleSubmit} >
                 <fieldset>
                     <label>
-                        <p className="input-header">Name of Recipe</p>
+                        <p className="input-header-temp">Name of Recipe</p>
                         <input name="title" onChange={handleChange} value={formData.title || ''} id="text"/>
                     </label>
                 </fieldset>
