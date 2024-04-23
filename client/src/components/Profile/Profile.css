@@ -120,4 +120,19 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
     transform: scale(1.05);
     font-weight: bold;
 }
+
+.calories-number {
+    font-size: 20px;
+    color: darkgreen;
+}
+
+.reset-button {
+    background-color: lightgreen;
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 10px;
+}
   
