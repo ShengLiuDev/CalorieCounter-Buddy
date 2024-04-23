@@ -53,9 +53,6 @@ const UploadRecipe = () => {
         const stepsArray = inputFields2.map(stepObject => stepObject.steps);
         const nonEmptyStepsArray = stepsArray.filter(step => step.trim() !== '');
 
-       
-        
-
         if (!userLoggedIn) {
             // If user is not logged in, redirect to the login page
             navigate('/login') // Change '/login' to the path of your login page
@@ -137,87 +134,89 @@ const UploadRecipe = () => {
      }
 
     return( 
-        <div className='wrapper'>
-        <div className='background-photo-page'>
-            <div className='text-color'>
-            <h1>Submit Your Recipe Idea Here!</h1>
-            {submitting &&
-                <div>Submtting Form...</div>}
-            <form onSubmit={handleSubmit} >
-            <fieldset>
-                <label>
-                    <p>Name of Recipe</p>
-                    <input name="title" onChange={handleChange} value={formData.title || ''}/>
-                </label>
-            </fieldset>
-            <fieldset>
-                <div>
-                    {
-                        inputFields.map((input, index) => {
-                            return(
-                                <div key = {index}>
-                                    <p>Ingredient Name</p>
-                                    <input name="name" onChange={event => handleFormChange(index, event)} value={input.name || ''}/>
-                                    <p>Quantity</p>
-                                    <input name="quantity" onChange={event => handleFormChange(index, event)} value={input.quantity || ''}/>
-                                    <p>Unit of Measurement</p>
-                                    <input name="measurement" onChange={event => handleFormChange(index, event)} value={input.measurement || ''}/>
-                                </div>
-                            )
-                        })
-                    }    
-                </div>
-            </fieldset>
-            <button onClick={addFields} className='adding-buttons'>Add Other Ingredient..</button>
-            <fieldset>
-                <div>
-                    {
-                        inputFields2.map((input, index) => {
-                            return(
-                                <div key = {index}>
-                                    <p>Instruction</p>
-                                    <input name="steps" onChange={event => handleFormChange2(index, event)} value={input.steps || ''}/>
-                                </div>
-                            )
-                        })
-                    }    
-                </div>
-            </fieldset>
-            <button onClick={addFields2} className='adding-buttons'>Add Next Instruction</button>
-            <fieldset>
-                <label>
-                    <p>Cooking Time (minutes)</p>
-                    <input type ="number" name="minutes" onChange={handleChange} value={formData.minutes || ''}/>
-                </label>
-            </fieldset>
-            <fieldset>
-                <label>
-                    <p>Description of Recipe</p>
-                    <input name="description" onChange={handleChange} value={formData.description || ''}></input>
-                </label>
-            </fieldset>
-            <fieldset>
-                <div>
-                    {
-                        inputFieldsTags.map((input, index) => {
-                            return(
-                                <div key = {index}>
-                                    <p>Add Relevant Tags</p>
-                                    <input name="tags" onChange={event => handleFormChangeTags(index, event)} value={input.tags || ''}/>
-                                </div>
-                            )
-                        })
-                    }    
-                </div>
-            </fieldset>
-            <button onClick={addFieldsTags} className='adding-buttons'>Add Another Tag</button>
-            <fieldset>
-                <button onClick={handleSubmit} className='submit-button'>Submit</button>
-            </fieldset>
-            </form>
+        <section className='wrapper'>
+            <div /*className='background-photo-page'*/>
+                <h1 className="recipe-header">Submit Your Recipe Idea Here!</h1>
+                {submitting &&
+                    <div>Submtting Form...</div>}
+                <form onSubmit={handleSubmit} >
+                <fieldset>
+                    <label>
+                        <p className="input-header">Name of Recipe</p>
+                        <input name="title" onChange={handleChange} value={formData.title || ''} type="input-box"/>
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <div>
+                        {
+                            inputFields.map((input, index) => {
+                                return(
+                                    <div key = {index}>
+                                        <p className="input-header">Ingredient Name</p>
+                                        <input name="name" onChange={event => handleFormChange(index, event)} value={input.name || ''} type="input-box"/>
+                                        <p className="input-header">Quantity</p>
+                                        <input name="quantity" onChange={event => handleFormChange(index, event)} value={input.quantity || ''} type="input-box"/>
+                                        <p className="input-header">Unit of Measurement</p>
+                                        <input name="measurement" onChange={event => handleFormChange(index, event)} value={input.measurement || ''} type="input-box"/>
+                                    </div>
+                                )
+                            })
+                        }    
+                    </div>
+                </fieldset>
+                <button onClick={addFields} className='adding-buttons' >
+                    <p className="input-header">Add Other Ingredient..</p>
+                </button>
+                <fieldset>
+                    <div>
+                        {
+                            inputFields2.map((input, index) => {
+                                return(
+                                    <div key = {index}>
+                                        <p className="input-header">Instructions</p>
+                                        <input name="steps" onChange={event => handleFormChange2(index, event)} value={input.steps || ''}/>
+                                    </div>
+                                )
+                            })
+                        }    
+                    </div>
+                </fieldset>
+                <button onClick={addFields2} className='adding-buttons'>
+                    <p className="input-header">Add Next Instruction</p>
+                </button>
+                <fieldset>
+                    <label>
+                        <p className="input-header">Cooking Time (minutes)</p>
+                        <input type ="number" name="minutes" onChange={handleChange} value={formData.minutes || ''}/>
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <label>
+                        <p className="input-header">Description of Recipe</p>
+                        <input name="description" onChange={handleChange} value={formData.description || ''}></input>
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <div>
+                        {
+                            inputFieldsTags.map((input, index) => {
+                                return(
+                                    <div key = {index}>
+                                        <p className="input-header">Add Relevant Tags</p>
+                                        <input name="tags" onChange={event => handleFormChangeTags(index, event)} value={input.tags || ''}/>
+                                    </div>
+                                )
+                            })
+                        }    
+                    </div>
+                </fieldset>
+                <button onClick={addFieldsTags} className='adding-buttons'>Add Another Tag</button>
+                <fieldset>
+                    <button onClick={handleSubmit} className='submit-button'>Submit</button>
+                </fieldset>
+                </form>
             </div>
-        </div>
-        </div>
+        </section>
     );
 }
 
