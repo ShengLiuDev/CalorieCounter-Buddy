@@ -3,22 +3,41 @@
 	src: url('/font/Arista-Pro-Light-trial.ttf');
 }
 
-/* .background-photo-page {
-    background-image: url('../../transparent-food.png');
-    background-size: cover;
-} */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
 
 .wrapper {
+    position: relative; /* Establish a stacking context */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Adjust the height as needed */
-    text-align: center; /* Centers the text for children */
-    font-size:20px
+    min-height: 100vh; 
+    text-align: center;
+    padding-top: 50px;
+    box-sizing: border-box;
+    /* margin-top: -850px; */
+}
+
+.wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../images/plant-upload.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.9; 
+    z-index: -1; 
 }
   
 .recipe-header {
-    margin-top: 850px;
+    margin-top: 50px;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -85,3 +104,4 @@ form select {
     color: lightgreen !important;
     background-color: lightblue;
 }
+

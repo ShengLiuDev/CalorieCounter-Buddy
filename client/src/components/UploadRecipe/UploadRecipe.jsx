@@ -3,10 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import axios from 'axios'; 
 import { useAuth } from '../../contexts/authContext';
 import './UploadRecipe.css'
-
-//function UploadRecipe()
-
-
+import plantBackground from '../../images/plant-upload.jpg';
 
 const UploadRecipe = () => {
 
@@ -135,7 +132,7 @@ const UploadRecipe = () => {
 
     return( 
         <section className='wrapper'>
-            <div /*className='background-photo-page'*/>
+            <div>
                 <h1 className="recipe-header">Submit Your Recipe Idea Here!</h1>
                 {submitting &&
                     <div>Submtting Form...</div>}

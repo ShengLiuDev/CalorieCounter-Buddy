@@ -7,29 +7,25 @@
 font-family: 'arista-bold';
 src: url('/font/Arista-Pro-Bold-trial.ttf');
 }
-
 .whole-profile-container {
-    background-color: white;
-    /* background-color: #fce0a4; */
-    width: 100vw;
-    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
-/* .profile-background {
-    opacity: 0.8;
-    position:relative;
-    display:flex;
-} */
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+}
 
 .profile-header-text {
+    margin-top: 150px;
     font-size: 50px;
     font-family: arista-light;
-    text-align: center;
-    position: relative;
-    padding: 120px;
-    /* font-weight: bold; */
-    /* text-decoration: underline;
-    text-decoration-thickness: 3px; */
 }
 
 .profile-header-subtext {
@@ -37,116 +33,91 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
 }
 
 .profile-underline {
-    background-color: black;
+    width: 100%; 
     border: 0;
-    height: 2px; /* This will give it a thickness */
-    opacity: 1;
-}
-
-.vertical-line {
-    margin-top: 258px;
-    left: 35%;
-    margin-left: -3px;
-    top: 0;
-    height: 500px;
-    position: absolute;
-    border-left: 2px solid black;
-}
+    height: 2px;
+    background-color: black;
+    opacity: 0.3;
+    margin-top: 10px; 
+}  
 
 .account-information-header {
     font-family: arista-light;
     font-size: 40px;
-    position: relative;
-    left: 57%;
-    margin-top: -120px;
-
 }
 
 .login-information {
     font-family: arista-light;
     font-size: 25px;
-    position: relative;
-
+    margin-top: -20px;
 }
 
-.logout-btn button{
+.logout-btn button {
     font-family: 'arista-light';
     font-size: 20px;
-    border: 2px solid black;
+    border: none; 
     border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
     transition: all 0.3s ease;
-    background-color: white;
-    color: black;
-    display: inline-block; 
-    margin-top: 20px; 
-    margin-left: 47px;
-}
-  
-.logout-btn:hover button {
-    background-color: #80BDFF; 
+    background-color: #80BDFF;
     color: white;
+}
+
+.logout-btn button:hover {
     box-shadow: 0 0 5px #80BDFF;
-    margin-left: 47px;
 }
 
 .profile-options-container {
-    text-decoration: none;
-    color: black;
-    font-family: arista-light;
-    font-size: 30px;
-    margin-top: -200px;
-    margin-left: 10%;
-    margin-left: 180px;
     display: flex;
-    align-items: flex-start;
     flex-direction: column;
-    gap: 50px;
+    align-items: center;
+    gap: 30px; 
+    margin-top: 20px; 
 }
 
 .options-header {
     font-size: 35px;
-    position: relative; 
-    display: inline-block; 
-    cursor: pointer; 
-    margin-left: 20px;
+    font-family: 'arista-light', sans-serif;
+    position: relative;
+    cursor: pointer;
+    padding-bottom: 5px; 
+    transition: all 0.3s ease;
 }
-  
+
 .options-header::after {
     content: '';
     position: absolute;
-    width: 0;
+    width: 0; 
     height: 2px;
-    display: flex;
-    left: 0;
-    background: black;
-    transition: width 0.3s ease; 
+    bottom: 0;
+    left: 50%; 
+    background-color: black;
+    transition: all 0.3s ease; 
+    transform: translateX(-50%); 
 }
-  
+
 .options-header:hover::after {
     width: 100%; 
     left: 0; 
+    transform: translateX(0%); 
 }
 
 .profile-link {
-    color: inherit;
+    font-family: arista-light;
+    font-size: 20px;
+    color: black;
     text-decoration: none;
     border: 2px solid black;
     border-radius: 20px;
     padding: 10px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 300px;
-    width: max-content;
+    min-width: 300px; 
+    text-align: center;
     transition: transform 0.2s ease-in-out;
-    box-sizing: border-box; /* Makes sure padding and border are included in width */
 }
 
 .profile-link:hover {
-    transform: scale(1.05); /* Scales the link slightly */
-    font-weight: bold; /* Makes the text bold */
+    transform: scale(1.05);
+    font-weight: bold;
 }
-
   
