@@ -114,7 +114,7 @@ function CalorieCounter() {
                     </fieldset>
                 </form>
                 <fieldset>
-                    <button onClick={handleSubmit} className='submit-button'>Submit</button>
+                    <button onClick={handleSubmit} className='upload-submit-btn'>Submit</button>
                 </fieldset>
                 {submitting &&
                 <div >You just consumed {cals} calories!</div>}

@@ -11,15 +11,14 @@
 font-family: arista-bold;
 src: url('/font/Arista-Pro-Bold-trial.ttf');
 }
-
-.background-photo-page{
+/* 
+.background-photo-page {
     background-image: url('../../transparent-food.png');
     background-size: cover;
     color: black;
-    background-position: center; /* Centers the background image within the container */
-    background-repeat: no-repeat; /* Prevents the background image from repeating */ 
-    min-height: 100vh;
+    background-position: center; 
 }
+*/
 
 .text-bold {
     color: black;

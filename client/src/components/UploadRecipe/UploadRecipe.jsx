@@ -3,7 +3,10 @@ import {useNavigate} from 'react-router-dom';
 import axios from 'axios'; 
 import { useAuth } from '../../contexts/authContext';
 import './UploadRecipe.css'
-import plantBackground from '../../images/plant-upload.jpg';
+
+//function UploadRecipe()
+
+
 
 const UploadRecipe = () => {
 
@@ -132,15 +135,15 @@ const UploadRecipe = () => {
 
     return( 
         <section className='wrapper'>
-            <div>
+            <div /*className='background-photo-page'*/>
                 <h1 className="recipe-header">Submit Your Recipe Idea Here!</h1>
                 {submitting &&
                     <div>Submtting Form...</div>}
                 <form onSubmit={handleSubmit} >
                 <fieldset>
-                    <label className="name-of-recipe-temp">
+                    <label>
                         <p className="input-header">Name of Recipe</p>
-                        <input name="title" onChange={handleChange} value={formData.title || ''} type="text"/>
+                        <input name="title" onChange={handleChange} value={formData.title || ''} id="text"/>
                     </label>
                 </fieldset>
                 <fieldset>
@@ -150,19 +153,21 @@ const UploadRecipe = () => {
                                 return(
                                     <div key = {index}>
                                         <p className="input-header">Ingredient Name</p>
-                                        <input name="name" onChange={event => handleFormChange(index, event)} value={input.name || ''} type="text"/>
+                                        <input name="name" onChange={event => handleFormChange(index, event)} value={input.name || ''} id="text"/>
                                         <p className="input-header">Quantity</p>
-                                        <input name="quantity" onChange={event => handleFormChange(index, event)} value={input.quantity || ''} type="text"/>
+                                        <input name="quantity" onChange={event => handleFormChange(index, event)} value={input.quantity || ''} id="text"/>
                                         <p className="input-header">Unit of Measurement</p>
-                                        <input name="measurement" onChange={event => handleFormChange(index, event)} value={input.measurement || ''} type="text"/>
+                                        <input name="measurement" onChange={event => handleFormChange(index, event)} value={input.measurement || ''} id="text"/>
                                     </div>
                                 )
                             })
                         }    
                     </div>
                 </fieldset>
-                <button onClick={addFields} className='adding-buttons' >
-                    <p className="input-header">Add Other Ingredient..</p>
+                <button onClick={addFields} className='adding-buttons'>
+                    <p className="input-header">
+                        Add Other Ingredient..
+                    </p>
                 </button>
                 <fieldset>
                     <div>
@@ -170,8 +175,8 @@ const UploadRecipe = () => {
                             inputFields2.map((input, index) => {
                                 return(
                                     <div key = {index}>
-                                        <p className="input-header" >Instructions</p>
-                                        <input name="steps" type="text" onChange={event => handleFormChange2(index, event)} value={input.steps || ''}/>
+                                        <p className="input-header">Instructions</p>
+                                        <input name="steps" onChange={event => handleFormChange2(index, event)} value={input.steps || ''} id="text"/>
                                     </div>
                                 )
                             })
@@ -179,18 +184,24 @@ const UploadRecipe = () => {
                     </div>
                 </fieldset>
                 <button onClick={addFields2} className='adding-buttons'>
-                    <p className="input-header">Add Next Instruction</p>
+                        <p className="input-header">
+                            Add Next Instruction
+                        </p>
                 </button>
                 <fieldset>
                     <label>
-                        <p className="input-header">Cooking Time (minutes)</p>
-                        <input name="minutes" type="text" onChange={handleChange} value={formData.minutes || ''}/>
+                        <p className="input-header">
+                            Cooking Time (minutes)
+                        </p>
+                        <input type ="number" name="minutes" onChange={handleChange} value={formData.minutes || ''} id="text"/>
                     </label>
                 </fieldset>
                 <fieldset>
                     <label>
-                        <p className="input-header">Description of Recipe</p>
-                        <input type="text" onChange={handleChange} value={formData.description || ''}></input>
+                        <p className="input-header">
+                            Description of Recipe
+                        </p>
+                        <input name="description" onChange={handleChange} value={formData.description || ''} id="text"></input>
                     </label>
                 </fieldset>
                 <fieldset>
@@ -199,8 +210,10 @@ const UploadRecipe = () => {
                             inputFieldsTags.map((input, index) => {
                                 return(
                                     <div key = {index}>
-                                        <p className="input-header">Add Relevant Tags</p>
-                                        <input type="text" onChange={event => handleFormChangeTags(index, event)} value={input.tags || ''}/>
+                                        <p className="input-header">
+                                            Add Relevant Tags
+                                        </p>
+                                        <input name="tags" onChange={event => handleFormChangeTags(index, event)} value={input.tags || ''} id="text"/>
                                     </div>
                                 )
                             })
@@ -213,7 +226,7 @@ const UploadRecipe = () => {
                     </p>
                 </button>
                 <fieldset>
-                    <button onClick={handleSubmit} className='upload-recipes-submit-btn'>
+                    <button onClick={handleSubmit} className='upload-submit-btn'>
                         <p className="input-header">
                             Submit
                         </p>

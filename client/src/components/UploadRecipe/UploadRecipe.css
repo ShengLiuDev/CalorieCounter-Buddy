@@ -75,8 +75,7 @@ form {
     
 }
 
-form input[type="text"],
-form input[type="number"],
+form input[id="text"],
 form select {
     font-family: sans-serif; 
     width: 100%; 
@@ -86,7 +85,7 @@ form select {
     border-radius: 4px; 
 }
 
-.adding-buttons, .upload-recipes-submit-btn {
+.adding-buttons, .upload-submit-btn {
     font-family: sans-serif; 
     margin-top: 10px; 
     padding: 10px 20px; 
@@ -96,12 +95,11 @@ form select {
     border-radius: 4px; 
 }
 
-.adding-buttons:hover, .upload-recipes-submit-btn:hover {
+.adding-buttons:hover, .upload-submit-btn:hover {
     background-color: #e7e7e7; 
 }
   
-.submit-button {
-    color: lightgreen !important;
+.upload-submit-btn {
     background-color: lightblue;
 }
 
