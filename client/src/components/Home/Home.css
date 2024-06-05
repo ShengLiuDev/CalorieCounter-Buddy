@@ -77,7 +77,18 @@ src: url('/font/Arista-Pro-Bold-trial.ttf');
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Creates 2 columns of equal width */
     grid-template-rows: repeat(2, auto); /* Creates enough rows for the content, sized to their content */
-    gap: 20px; /* This adds space between the grid items */
+    gap: 30px; /* This adds space between the grid items */
+	/* testing ignore */
+	/* testing ignore */
+	/* testing ignore */
+	/* testing ignore */
+	/* testing ignore */
+	/* testing ignore */
+	/* testing ignore */
+	/* testing ignore */
+	/* testing ignore */
+	/* testing ignore */
+	/* testing ignore */
 }
 
 .professional-headshots {
